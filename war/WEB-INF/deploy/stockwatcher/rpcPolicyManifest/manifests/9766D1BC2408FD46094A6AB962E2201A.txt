@@ -1,0 +1,2 @@
+serviceClass: com.google.gwt.sample.stockwatcher.client.TipoPedidoDptoService
+path: A35007CDE66660AD031364158B8E5B45.gwt.rpc

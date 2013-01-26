@@ -1,0 +1,2 @@
+serviceClass: com.google.gwt.sample.stockwatcher.client.ExistenciaService
+path: 6A17AB1D41AEBCED6D0116E09CCFB20C.gwt.rpc

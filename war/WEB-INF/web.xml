@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app>
+  <!-- Default page to serve -->  
+  <welcome-file-list>
+    <welcome-file>StockWatcher.html</welcome-file>
+  </welcome-file-list>
+  
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>loginService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.LoginServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>empresaService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.EmpresaServiceImpl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>tipoService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.TipoUsuarioServiceImpl</servlet-class>
+  </servlet>
+    
+  <servlet>
+    <servlet-name>centroService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.CentroCostosServiceImpl</servlet-class>
+  </servlet>
+    
+  <servlet>
+    <servlet-name>dptoService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.DepartamentoServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>lugarService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.LugarPedidoServiceImpl</servlet-class>
+  </servlet>
+  
+   <servlet>
+    <servlet-name>undService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.UndConsumoServiceImpl</servlet-class>
+   </servlet>
+   
+   <servlet>
+    <servlet-name>bodegaService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.BodegaServiceImpl</servlet-class>
+   </servlet>
+   
+   <servlet>
+    <servlet-name>usuarioService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.UsuarioServiceImpl</servlet-class>
+   </servlet>
+   
+   <servlet>
+    <servlet-name>productoService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.ProductoBaseServiceImpl</servlet-class>
+   </servlet>
+
+     <servlet>
+    <servlet-name>existenciaService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.ExistenciaServiceImpl</servlet-class>
+   </servlet>   
+   
+    <servlet>
+    <servlet-name>productopedidoService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.ProductoPedidoServiceImpl</servlet-class>
+   </servlet>   
+   
+      <servlet>
+    <servlet-name>tipoPedidoService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.TipoPedidoDptoServiceImpl</servlet-class>
+   </servlet> 
+   
+        <servlet>
+    <servlet-name>usuarioService</servlet-name>
+    <servlet-class>com.google.gwt.sample.stockwatcher.server.UsuarioServiceImpl</servlet-class>
+   </servlet> 
+   
+  <servlet-mapping>
+    <servlet-name>loginService</servlet-name>
+    <url-pattern>/stockwatcher/login</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>empresaService</servlet-name>
+    <url-pattern>/stockwatcher/empresa</url-pattern>
+  </servlet-mapping>
+ 
+  
+   <servlet-mapping>
+    <servlet-name>tipoService</servlet-name>
+    <url-pattern>/stockwatcher/tipousuario</url-pattern>
+   </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>centroService</servlet-name>
+    <url-pattern>/stockwatcher/centros</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>dptoService</servlet-name>
+    <url-pattern>/stockwatcher/dpto</url-pattern>
+  </servlet-mapping>
+    
+   <servlet-mapping>
+    <servlet-name>lugarService</servlet-name>
+    <url-pattern>/stockwatcher/lugar</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>undService</servlet-name>
+    <url-pattern>/stockwatcher/und</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>bodegaService</servlet-name>
+    <url-pattern>/stockwatcher/bodega</url-pattern>
+  </servlet-mapping>
+  
+    <servlet-mapping>
+    <servlet-name>usuarioService</servlet-name>
+    <url-pattern>/stockwatcher/usuario</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>productoService</servlet-name>
+    <url-pattern>/stockwatcher/producto</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>existenciaService</servlet-name>
+    <url-pattern>/stockwatcher/existencia</url-pattern>
+  </servlet-mapping>  
+  
+    <servlet-mapping>
+    <servlet-name>productopedidoService</servlet-name>
+    <url-pattern>/stockwatcher/pp</url-pattern>
+  </servlet-mapping>  
+  
+  
+  <servlet-mapping>
+    <servlet-name>tipoPedidoService</servlet-name>
+    <url-pattern>/stockwatcher/tipopedidodpto</url-pattern>
+  </servlet-mapping>  
+  
+  
+  <servlet-mapping>
+    <servlet-name>usuarioService</servlet-name>
+    <url-pattern>/stockwatcher/usuario</url-pattern>
+  </servlet-mapping>  
+  
+    <servlet>
+    <servlet-name>SystemServiceServlet</servlet-name>
+    <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
+    <init-param>        
+      <param-name>services</param-name>
+      <param-value/>
+    </init-param>
+  </servlet>  
+
+  <servlet-mapping>
+    <servlet-name>SystemServiceServlet</servlet-name>
+    <url-pattern>/_ah/spi/*</url-pattern>
+  </servlet-mapping>  
+ 
+
+</web-app>
