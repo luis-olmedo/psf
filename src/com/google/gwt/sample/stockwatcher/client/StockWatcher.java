@@ -1248,7 +1248,7 @@ private void editarPed(int m){
 			BoxlistProductop.setFocus(true);
 			
 	   }else{
-		     productoPedido.setText(m, 0,pro);
+		     productoPedido.setText(m, 5,pro);
 			 productoPedido.setText(m, 25,c);
 			 productoPedido.setText(m, 52,fechaC);
 		     productoPedido.setText(m, 58,cc);
@@ -1421,9 +1421,14 @@ private void organizar(){
 		//int p=Integer.parseInt(productoPedido.getWidget(j, 120).getTitle());		
 		
 				final Button eli= new Button("ELIMINAR");
+				final Button edit=new Button("EDITAR");
 				//Window.alert("p es en organizar:"+p);
 				eli.setTitle(""+j);
+				edit.setTitle(""+j);
 				productoPedido.setWidget(j, 120, eli);
+				productoPedido.setWidget(j, 100, edit);				
+				int ll=j-1;
+				productoPedido.setText(j, 0, ll+"");
 				eli.addClickHandler(new ClickHandler() {
 					
 					@Override
@@ -1433,6 +1438,17 @@ private void organizar(){
 							productoPedido.removeRow(p);
 							Window.alert("la  fila a eliminar es: "+p);
 							organizar();
+					}
+				});
+				
+				edit.addClickHandler(new ClickHandler() {
+					
+					@Override
+					public void onClick(ClickEvent event) {
+						// TODO Auto-generated method stub
+						int id=Integer.parseInt(edit.getTitle());
+						Window.alert("el numero es"+id);
+						editarPed(id);
 					}
 				});
 			
@@ -1774,7 +1790,7 @@ private  void gurad(){
 					 Window.alert("se guardo satisfactoriamente");
 				     gurad(pedi,producto,cantidad,fe,cen,observaciones,dep,fePed);
 					 Window.alert("Termino el ciclo for :p"+"\n Pedido: "+pedi+"\n"+producto+"\n"+cantidad+"\n"+fe+"\n"+cen+"\n"+observaciones+"\n"+dep+"\n"+fePed+"");
-					  
+					 
 					 
 				 }				 
 				 jj++;		 
