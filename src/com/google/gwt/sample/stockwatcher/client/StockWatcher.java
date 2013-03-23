@@ -1665,22 +1665,22 @@ private void organizar(){
 											}
 										});
 										
-		                        int po=i-1;
+		                        int po=i-2;
 		                        Window.alert("po es: "+po);
 									 productoPedido.setText(i-1, 0,po+"");	
 									 productoPedido.setText(i-1, 5, pro);
 									 productoPedido.setText(i-1, 25, cant+"");
 									 productoPedido.setText(i-1, 52, fechaC);
 									 productoPedido.setText(i-1, 58, cc);
-									 productoPedido.setText(i, 67, obs);
-									 productoPedido.setWidget(i, 100, edit);
-									 productoPedido.setWidget(i, 120, eli);
-									 productoPedido.setWidget(i, 90, add);
-									 productoPedido.setWidget(i+1, 5,  BoxlistProductop);
-									 productoPedido.setWidget(i+1, 25, cantidadBox);
-									 productoPedido.setWidget(i+1, 52, BoxfechaCubrimiento);
-									 productoPedido.setWidget(i+1, 58, BoxlistCentro);
-									 productoPedido.setWidget(i+1, 67, observacionesBox);
+									 productoPedido.setText(i-1, 67, obs);
+									 productoPedido.setWidget(i-1, 100, edit);
+									 productoPedido.setWidget(i-1, 120, eli);
+									 productoPedido.setWidget(i-1, 90, add);
+									 productoPedido.setWidget(i, 5,  BoxlistProductop);
+									 productoPedido.setWidget(i, 25, cantidadBox);
+									 productoPedido.setWidget(i, 52, BoxfechaCubrimiento);
+									 productoPedido.setWidget(i, 58, BoxlistCentro);
+									 productoPedido.setWidget(i, 67, observacionesBox);
 									
 									 									
 									 
