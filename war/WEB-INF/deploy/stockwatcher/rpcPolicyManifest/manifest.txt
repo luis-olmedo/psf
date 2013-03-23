@@ -9,7 +9,7 @@ com.google.gwt.sample.stockwatcher.client.UsuarioService, 614572E29D7BCC2FEC3726
 com.google.gwt.sample.stockwatcher.client.CentroCostoService, 7A718C815221C196E260B0825D904C27.gwt.rpc
 com.google.gwt.sample.stockwatcher.client.ProductoPedidoService, BE7BBF4605E5AC294E5AB809CEC77CF9.gwt.rpc
 com.google.gwt.sample.stockwatcher.client.LugarPedidoService, 094C5A54ED89BE0CA6CBFE3E48B57164.gwt.rpc
+com.google.gwt.sample.stockwatcher.client.ExistenciaService, 52D71CD982A0ADF32750F9644970320E.gwt.rpc
 com.google.gwt.sample.stockwatcher.client.TipoPedidoDptoService, 8F57389A7FF0D570B6BA8C2936807679.gwt.rpc
 com.google.gwt.sample.stockwatcher.client.TipoUsuarioService, ADC06AC478F5D8959D346E0032AFFF6C.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.ExistenciaService, 0F0E475E4BDCAF328B928C3EB62DC046.gwt.rpc
 com.google.gwt.sample.stockwatcher.client.BodegaService, 15B6C9FEDB37EB764A429393683A2841.gwt.rpc

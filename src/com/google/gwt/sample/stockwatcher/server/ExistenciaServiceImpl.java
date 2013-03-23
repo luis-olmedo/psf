@@ -25,9 +25,8 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 			    return PMF.getPersistenceManager();
 			  }
 		  
-		  @Override
 		  public void addExistencia(String codigoBodega, ArrayList<String> codigoProducto,
-					ArrayList<String> cantidad, Date fecha){	
+					ArrayList<String> cantidad, ArrayList<Date> fecha){	
 			  
 			          PersistenceManager pm = getPersistenceManager();	
 			          

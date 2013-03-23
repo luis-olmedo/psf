@@ -19,7 +19,7 @@ public class Exixtencias implements Serializable {
 	@Persistent
 	private ArrayList<String> cantidad;
 	@Persistent
-	private Date fecha;
+	private ArrayList<Date>  fecha;
 
 	
 	public Exixtencias() {
@@ -28,7 +28,7 @@ public class Exixtencias implements Serializable {
 
 
 	public Exixtencias(String codigoBodega, ArrayList<String> codigoProducto,
-			ArrayList<String> cantidad, Date fecha) {
+			ArrayList<String> cantidad, ArrayList<Date> fecha) {
 		super();
 		this.codigoBodega = codigoBodega;
 		this.codigoProducto = codigoProducto;
@@ -67,12 +67,12 @@ public class Exixtencias implements Serializable {
 	}
 
 
-	public Date getFecha() {
+	public ArrayList<Date> getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(Date fecha) {
+	public void setFecha(ArrayList<Date> fecha) {
 		this.fecha = fecha;
 	}
 
@@ -84,6 +84,8 @@ public class Exixtencias implements Serializable {
 				+ cantidad + ", fecha=" + fecha + "]";
 	}
 
+
+	
 
 	
 	

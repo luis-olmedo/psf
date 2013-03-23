@@ -16,7 +16,8 @@ public interface ExistenciaServiceAsync {
 			AsyncCallback<ArrayList<Exixtencias>> callback);
 
 	void addExistencia(String codigoBodega, ArrayList<String> codigoProducto,
-			ArrayList<String> cantidad, Date fecha, AsyncCallback<Void> callback);
+			ArrayList<String> cantidad, ArrayList<Date> fecha,
+			AsyncCallback<Void> callback);
 
 
 }

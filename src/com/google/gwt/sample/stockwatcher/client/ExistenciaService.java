@@ -19,6 +19,6 @@ public interface ExistenciaService  extends RemoteService{
 	ArrayList<Exixtencias> buscarExistencia(String codigoProducto);
 
 	void addExistencia(String codigoBodega, ArrayList<String> codigoProducto,
-			ArrayList<String> cantidad, Date fecha);
+			ArrayList<String> cantidad, ArrayList<Date> fecha);
 
 }

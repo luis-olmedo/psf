@@ -1268,8 +1268,6 @@ public  void pasar(String pe){
 	  String p=pe;
 	  pedidoBox.setText("llegue-"+p);
 }
-
-
  
  private   void borrarTodo(){
 	 final String codigoPedido=pedidoBox.getText().toUpperCase().trim();
@@ -1355,9 +1353,9 @@ private  void  displayproped(List<ProductoPedido>c){
 							// TODO Auto-generated method stub	
 							
 						    int p=Integer.parseInt(eli.getTitle());
+						    Window.alert("la  fila a eliminar es: "+p);
 							productoPedido.removeRow(p);						
-						
-								organizar();									
+							organizar();									
 						
 						
 						}
@@ -1416,21 +1414,15 @@ private  void  displayproped(List<ProductoPedido>c){
 
 
 private void organizar(){
-
 	
-	for(int j=2;j<=productoPedido.getRowCount(); j++){
-			
+	for(int j=2;j<=productoPedido.getRowCount(); j++){			
 		Window.alert("entro al ciclo: "+productoPedido.getWidget(j, 120).getTitle());
 		Window.alert("j es: "+j);
-		int p=Integer.parseInt(productoPedido.getWidget(j, 120).getTitle());
+		//int p=Integer.parseInt(productoPedido.getWidget(j, 120).getTitle());		
 		
-		if(j!=p){
-			if(p>j){
-				p--;
-				
-				 final Button eli= new Button("ELIMINAR");
-				Window.alert("p es:"+p);
-				eli.setTitle(""+p);
+				final Button eli= new Button("ELIMINAR");
+				//Window.alert("p es en organizar:"+p);
+				eli.setTitle(""+j);
 				productoPedido.setWidget(j, 120, eli);
 				eli.addClickHandler(new ClickHandler() {
 					
@@ -1439,12 +1431,14 @@ private void organizar(){
 						// TODO Auto-generated method stub
 						  int p=Integer.parseInt(eli.getTitle());
 							productoPedido.removeRow(p);
+							Window.alert("la  fila a eliminar es: "+p);
+							organizar();
 					}
 				});
-			}
 			
 			
-		}
+			
+		
 		
 	}
 	
@@ -1675,7 +1669,7 @@ private void organizar(){
 									 productoPedido.setText(i-1, 67, obs);
 									 productoPedido.setWidget(i-1, 100, edit);
 									 productoPedido.setWidget(i-1, 120, eli);
-									 productoPedido.setWidget(i-1, 90, add);
+									 productoPedido.setWidget(i, 90, add);
 									 productoPedido.setWidget(i, 5,  BoxlistProductop);
 									 productoPedido.setWidget(i, 25, cantidadBox);
 									 productoPedido.setWidget(i, 52, BoxfechaCubrimiento);
@@ -1715,7 +1709,7 @@ private void organizar(){
 private  void gurad(){
 	
 	final String pedi=pedidoBox.getText().toUpperCase().trim();
-	
+ jj=0;
 	productopedidoService.buscarProductoPedido(pedi, new AsyncCallback<ProductoPedido>() {
 
 		@Override
@@ -1748,7 +1742,7 @@ private  void gurad(){
 	final String dep=BoxlistDepto.getItemText(l);	
 	
 	 
-	 for(int k=2; k<productoPedido.getRowCount()-1; k++){	
+	 for(int k=2; k<=productoPedido.getRowCount()-2; k++){	
 		     Window.alert("el valor de tamano"+productoPedido.getRowCount());
 			 Window.alert("el valor de k"+k);
 			 Window.alert("el valor de jj"+jj);
@@ -1775,11 +1769,20 @@ private  void gurad(){
 				 
 				 producto.add(jj,productoPedido.getText(k,5));	 			
 				 
-				 if(jj==productoPedido.getRowCount()-3){					 
+				 if(jj==productoPedido.getRowCount()-4){			 
 				
 					
 				     gurad(pedi,producto,cantidad,fe,cen,observaciones,dep,fePed);
 					 Window.alert("Termino el ciclo for :p"+"\n Pedido: "+pedi+"\n"+producto+"\n"+cantidad+"\n"+fe+"\n"+cen+"\n"+observaciones+"\n"+dep+"\n"+fePed+"");
+					    productoPedido.removeAllRows();
+			            filitas();
+			            pedidoBox.setText("");
+			        	BoxlistProductop.setText("");
+			    	    cantidadBox.setText("");    	
+			    	    BoxlistCentro.setText("");
+			    	    observacionesBox.setText("");	
+			    	    pedidoBox.setEnabled(true);
+			    	    BoxlistDepto.setEnabled(true);
 					 
 				 }				 
 				 jj++;		 
