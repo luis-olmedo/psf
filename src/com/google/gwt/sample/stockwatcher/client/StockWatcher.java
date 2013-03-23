@@ -1774,15 +1774,7 @@ private  void gurad(){
 					
 				     gurad(pedi,producto,cantidad,fe,cen,observaciones,dep,fePed);
 					 Window.alert("Termino el ciclo for :p"+"\n Pedido: "+pedi+"\n"+producto+"\n"+cantidad+"\n"+fe+"\n"+cen+"\n"+observaciones+"\n"+dep+"\n"+fePed+"");
-					    productoPedido.removeAllRows();
-			            filitas();
-			            pedidoBox.setText("");
-			        	BoxlistProductop.setText("");
-			    	    cantidadBox.setText("");    	
-			    	    BoxlistCentro.setText("");
-			    	    observacionesBox.setText("");	
-			    	    pedidoBox.setEnabled(true);
-			    	    BoxlistDepto.setEnabled(true);
+					  
 					 
 				 }				 
 				 jj++;		 
@@ -1807,6 +1799,16 @@ private  void gurad(){
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se guardo satisfactoriamente");
+			    
+			    productoPedido.removeAllRows();
+	            filitas();
+	            pedidoBox.setText("");
+	        	BoxlistProductop.setText("");
+	    	    cantidadBox.setText("");    	
+	    	    BoxlistCentro.setText("");
+	    	    observacionesBox.setText("");	
+	    	    pedidoBox.setEnabled(true);
+	    	    BoxlistDepto.setEnabled(true);
 		}
 	});
 	 
