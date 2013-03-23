@@ -1665,22 +1665,22 @@ private void organizar(){
 											}
 										});
 										
-		                        int po=i-2;
+		                        int po=i-1;
 		                        Window.alert("po es: "+po);
-									 productoPedido.setText(i+2, 0,po+"");	
-									 productoPedido.setText(i+2, 5, pro);
-									 productoPedido.setText(i+2, 25, cant+"");
-									 productoPedido.setText(i+2, 52, fechaC);
-									 productoPedido.setText(i+2, 58, cc);
-									 productoPedido.setText(i+2, 67, obs);
-									 productoPedido.setWidget(i+2, 100, edit);
-									 productoPedido.setWidget(i+2, 120, eli);
-									 productoPedido.setWidget(i+3, 90, add);
-									 productoPedido.setWidget(i+3, 5,  BoxlistProductop);
-									 productoPedido.setWidget(i+3, 25, cantidadBox);
-									 productoPedido.setWidget(i+3, 52, BoxfechaCubrimiento);
-									 productoPedido.setWidget(i+3, 58, BoxlistCentro);
-									 productoPedido.setWidget(i+3, 67, observacionesBox);
+									 productoPedido.setText(i-1, 0,po+"");	
+									 productoPedido.setText(i-1, 5, pro);
+									 productoPedido.setText(i-1, 25, cant+"");
+									 productoPedido.setText(i-1, 52, fechaC);
+									 productoPedido.setText(i-1, 58, cc);
+									 productoPedido.setText(i, 67, obs);
+									 productoPedido.setWidget(i, 100, edit);
+									 productoPedido.setWidget(i, 120, eli);
+									 productoPedido.setWidget(i, 90, add);
+									 productoPedido.setWidget(i+1, 5,  BoxlistProductop);
+									 productoPedido.setWidget(i+1, 25, cantidadBox);
+									 productoPedido.setWidget(i+1, 52, BoxfechaCubrimiento);
+									 productoPedido.setWidget(i+1, 58, BoxlistCentro);
+									 productoPedido.setWidget(i+1, 67, observacionesBox);
 									
 									 									
 									 
