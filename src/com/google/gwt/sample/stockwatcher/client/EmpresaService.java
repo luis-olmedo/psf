@@ -12,7 +12,8 @@ public interface EmpresaService extends RemoteService {
 	public void  elminarEmpresa(String codigo);	
 	void modificarEmpresa(String codigo, String nombre);
 	Empresa e(String codigo);
-	ArrayList<Empresa> cargarEmpresa();
+	ArrayList<Empresa> cargarEmpresa();	
+	ArrayList<Empresa> listTodos();
 
 	
 	

@@ -1,12 +1,14 @@
 package com.google.gwt.sample.stockwatcher.client;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 import com.google.gwt.sample.stockwatcher.server.Bodega;
 import com.google.gwt.sample.stockwatcher.server.CentroCostos;
 import com.google.gwt.sample.stockwatcher.server.Departamento;
 import com.google.gwt.sample.stockwatcher.server.Empresa;
+import com.google.gwt.sample.stockwatcher.server.Exixtencias;
 import com.google.gwt.sample.stockwatcher.server.LugarPedido;
 import com.google.gwt.sample.stockwatcher.server.ProductoBase;
 import com.google.gwt.sample.stockwatcher.server.ProductoPedido;
@@ -19,24 +21,33 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import java.util.Date;
+
+import org.apache.jasper.tagplugins.jstl.core.Remove;
+
+import sun.awt.HorizBagLayout;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
-
 import com.google.gwt.user.client.ui.CheckBox;
+
 import com.google.gwt.user.client.ui.FlexTable;
+
 import com.google.gwt.user.client.ui.HorizontalPanel;
+
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
-import com.google.gwt.user.client.ui.RadioButton;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+
 import com.google.gwt.user.datepicker.client.DateBox;
+
+
 
 
 public class StockWatcher implements EntryPoint {
@@ -90,6 +101,7 @@ private VerticalPanel mainPanel = new VerticalPanel();
   private TextBox nombreBox= new TextBox();
   private Button eliminarBoton= new Button("Eliminar");
   private Button modificarEmpresa = new Button("modificar");
+  private Button todaEmpresa = new Button("Traer Empresas");
   
   private Label tipolabel= new Label("Codigo: ");
   private TextBox tipoBox= new TextBox();  
@@ -180,7 +192,7 @@ private VerticalPanel mainPanel = new VerticalPanel();
   private  FlexTable existenciaPro = new FlexTable();
   private  Button agregarExistencia= new  Button("Agregar Existencia");
   private TextBox Boxcantidadexi= new TextBox();  
-  private Button crearExistenciaBoton= new Button("Crear");
+  private Button crearExistenciaBoton= new Button("Guardar");
   private Button eliminarExistencia= new Button("Eliminar");
   private Button modificarExistencia= new Button("Modificar");
   private Button buscarExistencia= new Button("Buscar");
@@ -190,7 +202,6 @@ private VerticalPanel mainPanel = new VerticalPanel();
 private  FlexTable productoPedido = new FlexTable();
 private  Button add= new  Button("Add");
 private  TextBox pedidoBox= new TextBox();
-
 private  TextBox cantidadBox= new TextBox();
 private  TextBox observacionesBox= new TextBox();
 MultiWordSuggestOracle cen = new MultiWordSuggestOracle ();  
@@ -198,9 +209,14 @@ private SuggestBox BoxlistCentro= new SuggestBox(cen) ;
 MultiWordSuggestOracle pro = new MultiWordSuggestOracle ();  
 private SuggestBox BoxlistProductop= new SuggestBox(pro) ;
 private DateBox BoxfechaCubrimiento= new DateBox();
+private Label  pedidooo= new Label("Pedido:");
+private  Label pedFecha= new Label("Fecha: ");
+private  Label pedFecha1= new Label();
+private  Label dp = new Label("Departamento: ");
+private ListBox BoxlistDepto= new ListBox();
+
 private  Button eliminarProductoPedido=new Button("Consultar");
 private Button buscarProductoPedido=new Button("Guardar");
-private  Button borrarpedidoProducto=new Button("busqueda de pro");
 private  Button borrarTodo=new Button("Cancelar Producto Pedido");
 private  Button limpiar= new Button("Limpiar");
 
@@ -251,7 +267,13 @@ private Button crearUsuario=new Button("Crear");
 private Button modificarUsuario=new Button("Modificar");
 private Button eliminarUsuario=new Button("Eliminar");
 private Button buscarUsuario=new Button("Buscar");
-   		    
+
+
+private Button eliminarPedidosButton = new Button("Eliminar");
+private TextBox num= new TextBox();
+private  TextBox  fechaped= new TextBox();
+private  TextBox saldoBox=new TextBox();
+
   public void onModuleLoad() {
 	  
 	    LoginServiceAsync loginService = GWT.create(LoginService.class);	    
@@ -512,10 +534,20 @@ private Button buscarUsuario=new Button("Buscar");
 			existenciasBoton.setVisible(false);
 			pedidoproductoBoton.setVisible(false);
 			tipopedidodptpBoton.setVisible(false);
-			usuarioBoton.setVisible(false);
-			mostrarProductoPedido();
+			usuarioBoton.setVisible(false);	      
+			/*DialogBox dlg = new Bienevenida();
+	        dlg.center();	       
+	        dlg.setLayoutData(new HorizontalSplitPanel());
+	        dlg.setHeight("100%");
+	        dlg.setWidth("100%");*/
+			mostrarProductoPedido();	
+	        
+	        
+	  
+
 		}
 	});
+	 
 	 
 	 tipopedidodptpBoton.addClickHandler(new ClickHandler() {
 		
@@ -536,11 +568,10 @@ private Button buscarUsuario=new Button("Buscar");
 			tipopedidodptpBoton.setVisible(false);
 			usuarioBoton.setVisible(false);
 			mostrarTipoPedidoDpto();
-
 		}
 	});
-	 usuarioBoton.addClickHandler(new ClickHandler() {
-		
+	 
+	 usuarioBoton.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
@@ -561,6 +592,8 @@ private Button buscarUsuario=new Button("Buscar");
 		}
 	});
 	  }
+
+
   
   private  void  mostrarUsuario(){	  
 	  addPanel.add(lusu);
@@ -805,12 +838,9 @@ private Button buscarUsuario=new Button("Buscar");
 	  RootPanel.get("stockList").add(mainPanel);
 	  cargarDepartamento();
 	  cargarEmpresa();
-	  cargarLugar();
+	  cargarLugar();	  
 	  
-	  
-	  
-	  crearTipoPedidoBoton.addClickHandler(new ClickHandler() {
-		
+	  crearTipoPedidoBoton.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
@@ -855,7 +885,7 @@ private Button buscarUsuario=new Button("Buscar");
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("no se encontro: "+caught);
+			Window.alert("no se encontro ");
 		}
 
 		@Override
@@ -880,7 +910,7 @@ private Button buscarUsuario=new Button("Buscar");
 	  tipoPedidoService.elminarTipoPedidoDpto(codigoPedido, new AsyncCallback<Void>() {
 
 		@Override
-		public void onFailure(Throwable caught) {
+		public void onFailure(Throwable caught){
 			// TODO Auto-generated method stub
 			Window.alert("no se elimino");
 		}
@@ -888,7 +918,9 @@ private Button buscarUsuario=new Button("Buscar");
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("se elimino");
+			Window.alert("se elimino con exito");
+			BoxlistPedidos.setText("");
+			BoxCubrimiento.setText("");
 		}
 		  
 	});
@@ -905,8 +937,7 @@ private Button buscarUsuario=new Button("Buscar");
 	  int  cubrimiento=Integer.parseInt(cu);	  
 	  modificarTipoPedido(codigoPedido,lugarPedido,deptoPedido,empresaPedido,cubrimiento);
   }
-  
-  
+    
   private void modificarTipoPedido(String codigoPedido,String lugarPedido,String deptoPedido,String empresaPedido,int cubrimiento){
 	  tipoPedidoService.modificarTipoPedidoDpto(codigoPedido, deptoPedido, lugarPedido, empresaPedido, cubrimiento, new AsyncCallback<Void>() {
 
@@ -924,6 +955,7 @@ private Button buscarUsuario=new Button("Buscar");
 	});
 	  
   }
+  
   private  void crearTipoPedido(){	  
 	  String codigoPedido=BoxlistPedidos.getText().toUpperCase().trim();
 	  final int i=BoxlistLugar.getSelectedIndex();
@@ -950,6 +982,9 @@ private Button buscarUsuario=new Button("Buscar");
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("guardo tipo pedido der  manera Satisfactoria");
+			BoxlistPedidos.setText("");
+			BoxCubrimiento.setText("");
+			
 		}
 	});
   }
@@ -957,11 +992,10 @@ private Button buscarUsuario=new Button("Buscar");
 
   private  void cargarLugar(){
 	  lugarService.cargarLugarPedido(new AsyncCallback<ArrayList<LugarPedido>>() {
-
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("error  al cargar  el lugar"+caught);
+			Window.alert("error  al cargar la  lista del lugar");
 		}
 
 		@Override
@@ -983,7 +1017,7 @@ private Button buscarUsuario=new Button("Buscar");
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("no  logro cargar la  empresa"+caught );
+			Window.alert("no  logro cargar la lista de empresa");
 		}
 
 		@Override
@@ -1005,9 +1039,9 @@ private Button buscarUsuario=new Button("Buscar");
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("error  al cargar departamento: "+caught);
+			Window.alert("error  al cargar lista de departamento ");
 		}
-
+		
 		@Override
 		public void onSuccess(ArrayList<Departamento> result) {
 			// TODO Auto-generated method stub
@@ -1016,70 +1050,127 @@ private Button buscarUsuario=new Button("Buscar");
 	});
 	  
   }
+  
+  private  void cargarDepartamento1(){
+	  dptoService.cargarDepartamento(new AsyncCallback<ArrayList<Departamento>>() {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			Window.alert("error  al cargar lista de departamento ");
+		}
+		
+		@Override
+		public void onSuccess(ArrayList<Departamento> result) {
+			// TODO Auto-generated method stub			
+			displayDpto1(result);
+		}
+	});
+	  
+  }
+  
+  private  void  displayDpto1(List<Departamento>dpto){
+		for (Departamento d:dpto){			   
+			BoxlistDepto.addItem(d.getNomDpto());			
+		}  		
+	  }
   private  void  displayDpto(List<Departamento>dpto){
 		for (Departamento d:dpto){			   
 			BoxlistDpto.addItem(d.getNomDpto());			
 		}  		
 	  }
 
- private  void mostrarProductoPedido(){
+  private  void  filitas(){	
+	     productoPedido.setText(1, 0, "ITEM");
+		 productoPedido.setText(1, 5, "PRODUCTO");
+		 productoPedido.setText(1, 25,"CANTIDAD");
+		 productoPedido.setText(1, 52,"FECHA CUBRIMIENTO");
+		 productoPedido.setText(1, 58,"CENTRO DE COSTOS");
+		 productoPedido.setText(1, 67,"OBSERVACIONES");		
+		 productoPedido.setText(1, 80,"SALDO");	
+		 productoPedido.setWidget(2, 90, add);
+		 productoPedido.setWidget(2, 5, BoxlistProductop);
+		 productoPedido.setWidget(2, 25, cantidadBox);
+		 productoPedido.setWidget(2, 52, BoxfechaCubrimiento);
+		 productoPedido.setWidget(2, 58, BoxlistCentro);
+		 productoPedido.setWidget(2, 67, observacionesBox);
+	
+  }
+
+  
+public  void mostrarProductoPedido(){	
+     filitas();
+     addPanel.add(pedidooo); 
+  	 addPanel.add(pedidoBox);
+	 addPanel.add(pedFecha);
+	 addPanel.add(pedFecha1);
+	 addPanel.add(fechaped);	 
+	 addPanel1.add(dp);
+	 addPanel1.add(BoxlistDepto);	 	
+	 addPanel2.add(productoPedido);
 	 
-	 productoPedido.setText(0, 0, "GESTION DE PRODUCTO PEDIDO");
-	 productoPedido.setText(1, 0, "PEDIDO");
-	 productoPedido.setText(1, 3, "PRODUCTO");
-	 productoPedido.setText(1, 6, "CANTIDAD");
-	 productoPedido.setText(1, 9,"FECHA CUBRIMIENTO");
-	 productoPedido.setText(1, 12,"CENTRO DE  COSTOS");
-	 productoPedido.setText(1, 15,"OBSERVACIONES");
-	 
-			 
-	 addPanel.add(productoPedido);
-	 addPanel1.add(pedidoBox); 
-	 addPanel1.add(BoxlistProductop);
-	 addPanel1.add(cantidadBox);
-	 addPanel1.add(BoxfechaCubrimiento);
-	 addPanel1.add(BoxlistCentro);
-	 addPanel1.add(observacionesBox);	
-	 addPanel1.add(add);
-	 addPanel1.add(borrarpedidoProducto);		
-	 addPanel2.add(eliminarProductoPedido);
-	 addPanel2.add(buscarProductoPedido);
-	 addPanel2.add(limpiar);
-	 addPanel3.add(usu);
-	 addPanel3.add(usuario);
-	 mainPanel.add(addPanel3);
+	 /*addPanel3.add(BoxlistProductop);
+	 addPanel3.add(cantidadBox);
+	 addPanel3.add(BoxfechaCubrimiento);
+	 addPanel3.add(BoxlistCentro);
+	 addPanel3.add(observacionesBox);	
+	 addPanel3.add(saldoBox);
+	 addPanel3.add(add);*/	
+	 addPanel4.add(eliminarProductoPedido);
+	 addPanel4.add(buscarProductoPedido);
+	 addPanel4.add(limpiar);	
+	 addPanel4.add(eliminarPedidosButton);
+	 addPanel5.add(usu);
+	 addPanel5.add(usuario);
 	 mainPanel.add(addPanel);
 	 mainPanel.add(addPanel1);
 	 mainPanel.add(addPanel2);
+	 mainPanel.add(addPanel3);
+	 mainPanel.add(addPanel4);
+	 mainPanel.add(addPanel5);
 	 RootPanel.get("stockList").add(mainPanel);	
 	 cargarCentross();
-	 cargarProductoss();
+	 cargarProductoss();	
+	 cargarDepartamento1();		 
+	 fechaped.setText("DD/MM/YYYY");
+	 fechaped.setEnabled(false); 	
 	 
 	
-	 add.addClickHandler(new ClickHandler() {
-
+	 
+	 eliminarPedidosButton.addClickHandler(new ClickHandler() {
+		
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
-			addPedidoPro();
+			eliminarPedido();
+		}
+	});
+	 	
+	
+	 add.addClickHandler(new ClickHandler() {
+		@Override
+		public void onClick(ClickEvent event) {
+			// TODO Auto-generated method stub
+			//addPedidoPro();
+			validarProducto();
 			
 		}
 	});	  
-	 buscarProductoPedido.addClickHandler(new ClickHandler() {
-		
+	 
+	 buscarProductoPedido.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
 			gurad();
+			
 		}
 	});
 	 
-	 eliminarProductoPedido.addClickHandler(new ClickHandler() {
-		
+	 eliminarProductoPedido.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
-			buscar();
+			consultarListas();
 		}
 	});
 	
@@ -1090,33 +1181,101 @@ private Button buscarUsuario=new Button("Buscar");
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
 			borrarTodo();
+		
 		}
 	});
-	 borrarpedidoProducto.addClickHandler(new ClickHandler() {
-		
+		 
+	 
+	 limpiar.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
-			busqueda();
+			productoPedido.removeAllRows();
+            filitas();
+            pedidoBox.setText("");
+        	BoxlistProductop.setText("");
+    	    cantidadBox.setText("");    	
+    	    BoxlistCentro.setText("");
+    	    observacionesBox.setText("");	
+    	    pedidoBox.setEnabled(true);
+    	    BoxlistDepto.setEnabled(true);
+    	    int jj=0;
+    	    int h=0;
+		}
+	});	 
+	 } 
+
+
+
+
+private void eliminarPedido(){
+	String pedido= pedidoBox.getText().toUpperCase().trim();
+	eliminarPedido(pedido);
+}
+
+private  void eliminarPedido(String pedido){
+	productopedidoService.elminarProductoPedido(pedido, new AsyncCallback<Void>() {
+		
+		@Override
+		public void onSuccess(Void result) {
+			// TODO Auto-generated method stub
+			Window.alert("EL PEDIDO  FUE ELIMINADO");
+			pedidoBox.setText("");
+		}
+		
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			Window.alert("NO SE  LOGRO ELIMINAR EL PRODUCTO PORFAVOR INGRESAR  BIEN EL CODIGO");
 		}
 	});
-	 
+}
+
+private void editarPed(int m){ 
 	
- }
- private  void busqueda(){
-	 final String  pro=BoxlistProductop.getText().toUpperCase().trim();
-	 busqueda(pro);
- }
- 
- private  void  busqueda(String producto){
-	 productopedidoService.
- }
+	 final String pro=BoxlistProductop.getText().toUpperCase().trim();
+	 final String c= cantidadBox.getText().toUpperCase().trim();			 
+	 final double cant= Double.parseDouble(c); 
+	 final String  cc=BoxlistCentro.getText().toUpperCase().trim();
+	 final String obs= observacionesBox.getText().toUpperCase().trim();  	  
+	 Date fu=new Date();
+     DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");		
+	 String fechaC=fmtDate.format(fu);	
+	 int p=0;
+	 
+	   if(pro.equalsIgnoreCase("")|| pro==null){ 		  
+			Window.alert("porfavor llene los campos que de editacion");
+			BoxlistProductop.setFocus(true);
+			
+	   }else{
+		     productoPedido.setText(m, 0,pro);
+			 productoPedido.setText(m, 25,c);
+			 productoPedido.setText(m, 52,fechaC);
+		     productoPedido.setText(m, 58,cc);
+			 productoPedido.setText(m, 67,obs);			   
+	   }
+						
+		
+	
+}
+
+public  void act(){
+	mostrarProductoPedido();
+}
+
+public  void pasar(String pe){
+	  Window.alert("pe llego con: "+pe);
+	  String p=pe;
+	  pedidoBox.setText("llegue-"+p);
+}
+
 
  
  private   void borrarTodo(){
 	 final String codigoPedido=pedidoBox.getText().toUpperCase().trim();
 	 borrarTodo(codigoPedido);
  }
+ 
  private  void  borrarTodo(String codigoPedido){
 	productopedidoService.elminarProductoPedido(codigoPedido, new AsyncCallback<Void>() {
 
@@ -1130,79 +1289,166 @@ private Button buscarUsuario=new Button("Buscar");
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("si elimino de  manera exitosa");
-		}
-		
-	});
-	 
- }
- private  void buscar(){
-	 final String codigoPedido=pedidoBox.getText().toUpperCase().trim();
-	 buscar(codigoPedido);
- }
-int j=2;
-
- private  void buscar(String codigoPedido){
-	productopedidoService.buscarProductoPedido(codigoPedido, new AsyncCallback<ProductoPedido>() {
-
-		@Override
-		public void onFailure(Throwable caught) {
-			// TODO Auto-generated method stub
-			Window.alert("no se encontro :("+caught);
-		}
-
-		@Override
-		public void onSuccess(ProductoPedido result) {	
-			
-			Window.alert("lo encontro ;)"+result.getCodigoPedido());	
-			
-	        consultarListas(result.getCodigoPedido());
-		
-		}
-		
-	});
+		}		
+	});	 
  }
  
-private  void  consultarListas(String codigoPedido){
+ private  void consultarListas(){
+	 pedidoBox.setEnabled(false);
+	 BoxlistDepto.setEnabled(false);
+	 final String codigoPedido=pedidoBox.getText().toUpperCase().trim();
+	 consultarListas(codigoPedido);	 
+ } 
+ 
+int j=2; 
+private  void  consultarListas(String codigoPedido){	
 	
-	productopedidoService.cargarProductoPedido(codigoPedido, new AsyncCallback<ArrayList<ProductoPedido>>() {
-
+	productopedidoService.cargarProductoPedido(codigoPedido,new AsyncCallback<ArrayList<ProductoPedido>>() {
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("nno funcionaron las listas");
+			Window.alert("no  funciono");
 		}
-
+		
 		@Override
 		public void onSuccess(ArrayList<ProductoPedido> result) {
 			// TODO Auto-generated method stub
-			Window.alert("funciono las lista :p");
-			displayLista(result);
+			Window.alert("funciono :D"+ result.size());
+			Window.alert("poscion 0: "+ result.get(0).getProducto());
+
+			displayproped(result);
 		}
 		
 	});
 }
+private  void  displayproped(List<ProductoPedido>c){
+	
+	Window.alert("entro por aqui");
+	int o=0;
+	for (ProductoPedido cc:c){		
+		Window.alert("esto es o"+o);
+		Window.alert("el tamano es"+cc.getProducto().size());		 
+			
+		 for (int  i=0; i<cc.getProducto().size(); i++){
+			 Window.alert("entro a esta famoso ciclo");
+			 Window.alert("el tamano de nuevo es"+cc.getProducto().size());
+			 Window.alert("jum"+i);
+			 final Button edit= new Button("EDITAR");
+			 int p=i+2;
+			 edit.setTitle(""+p);
+			 final Button eli= new Button("ELIMINAR");
+			 eli.setTitle(""+p);
+			 
+					edit.addClickHandler(new ClickHandler() {											
+						@Override
+						public void onClick(ClickEvent event) {
+							// TODO Auto-generated method stub							
+							int id=Integer.parseInt(edit.getTitle());
+							Window.alert("el numero es"+id);
+							editarPed(id);
+						}
+					});
+					
+					eli.addClickHandler(new ClickHandler() {						
+						@Override
+						public void onClick(ClickEvent event) {
+							// TODO Auto-generated method stub	
+							
+						    int p=Integer.parseInt(eli.getTitle());
+							productoPedido.removeRow(p);						
+						
+								organizar();									
+						
+						
+						}
+					});
+					Window.alert("i es en la consulta");
+			
+			 productoPedido.setText(i+2, 0,i+1+"");		
+			 productoPedido.setText(i+2, 5,cc.getProducto().get(i));
+			 productoPedido.setText(i+2, 25,cc.getCantidadProducto().get(i)+"");			 
+			 final Date fee = cc.getFechaCubrimiento().get(i);
+			 DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");		
+			 String fechaC=fmtDate.format(fee);			
+			 productoPedido.setText(i+2, 52,fechaC);
+			 productoPedido.setText(i+2, 58,cc.getCentro().get(i));
+			 productoPedido.setText(i+2, 67,cc.getObservaciones().get(i));	
+			 productoPedido.setWidget(i+2, 100,edit);
+			 productoPedido.setWidget(i+2, 120, eli);		 
+			 productoPedido.setWidget(i+3, 90, add);
+			 productoPedido.setWidget(i+3, 5, BoxlistProductop);
+			 productoPedido.setWidget(i+3, 25, cantidadBox);
+			 productoPedido.setWidget(i+3, 52, BoxfechaCubrimiento);
+			 productoPedido.setWidget(i+3, 58, BoxlistCentro);
+			 productoPedido.setWidget(i+3, 67, observacionesBox);
+			 
+			 final int k=i+2;
+			 String producto=productoPedido.getText(i+2, 5);
+			  
+				productoService.cargarProductico(k,producto, new AsyncCallback<ArrayList<ProductoBase>>() {
 
-private  void displayLista(ArrayList<ProductoPedido>ppp){
+					@Override
+					public void onFailure(Throwable caught) {
+						// TODO Auto-generated method stub
+						Window.alert("no encontro el saldo del producto");
+					}
 
-for (ProductoPedido p : ppp) {
+					@Override
+					public void onSuccess(ArrayList<ProductoBase> result) {
+						// TODO Auto-generated method stub			 
+						
+						 productoPedido.setText(k, 80,  result.get(0).getCantidadInventariado()+"");
+					}
+					
+				});
+		 }	
+		 
+			
+		 pedidoBox.setText(cc.getCodigoPedido());
+		 final Date fePe = cc.getFechaCubrimiento().get(2);
+		 DateTimeFormat fmtDate1=DateTimeFormat.getFormat("dd/MM/yyyy");		
+		 String fePed=fmtDate1.format(fePe);	
+		 pedFecha.setText(fePed);
 		
-		for  (int  i=0; i<p.getProducto().size(); i++){					 
-			 productoPedido.setText(i+2, 0, p.getCodigoPedido());
-			 productoPedido.setText(i+2, 3, p.getProducto().get(i));
-			 productoPedido.setText(i+2, 6, p.getCantidadProducto().get(i)+"");
-			 productoPedido.setText(i+2, 9, p.getFechaCubrimiento().get(i)+"");
-			 productoPedido.setText(i+2, 12,p.getCentro().get(i));
-			 productoPedido.setText(i+2, 15,p.getObservaciones().get(i));
+	}  		
+  } 
+
+
+
+private void organizar(){
+
+	
+	for(int j=2;j<=productoPedido.getRowCount(); j++){
+			
+		Window.alert("entro al ciclo: "+productoPedido.getWidget(j, 120).getTitle());
+		Window.alert("j es: "+j);
+		int p=Integer.parseInt(productoPedido.getWidget(j, 120).getTitle());
+		
+		if(j!=p){
+			if(p>j){
+				p--;
 				
+				 final Button eli= new Button("ELIMINAR");
+				Window.alert("p es:"+p);
+				eli.setTitle(""+p);
+				productoPedido.setWidget(j, 120, eli);
+				eli.addClickHandler(new ClickHandler() {
+					
+					@Override
+					public void onClick(ClickEvent event) {
+						// TODO Auto-generated method stub
+						  int p=Integer.parseInt(eli.getTitle());
+							productoPedido.removeRow(p);
+					}
+				});
+			}
+			
+			
 		}
+		
 	}
-
 	
-	 
-	
-
-	
-}	
+}
 
  private  void cargarCentross(){
 	 centroService.cargarCentroCostos(new AsyncCallback<ArrayList<CentroCostos>>() {
@@ -1218,15 +1464,13 @@ for (ProductoPedido p : ppp) {
 			displayCentross(result);
 		}
 	});
- }
- 
+ } 
  private  void  displayCentross(List<CentroCostos>c){
 		for (CentroCostos cc:c){			   
 			cen.add(cc.getNombreCosto());
 			
 		}  		
-	  }
- 
+	  } 
  
  private  void cargarProductoss(){
 	 productoService.cargarProducto(new AsyncCallback<ArrayList<ProductoBase>>() {
@@ -1241,8 +1485,7 @@ for (ProductoPedido p : ppp) {
 		public void onSuccess(ArrayList<ProductoBase> result) {
 			// TODO Auto-generated method stub
 			displayProductoss(result);
-		}
-		 
+			}		 
 	});
  }
  
@@ -1250,99 +1493,318 @@ for (ProductoPedido p : ppp) {
 		for (ProductoBase pp:p){			   
 			pro.add(pp.getDescripcion());
 		}  		
-	  }
+	  }  
 
-int i=2;
- private void addPedidoPro() {
+ private void validarProducto(){
 	 
-	     Window.alert("hizo  click"+i);
-		 final String ped= pedidoBox.getText().toUpperCase().trim();
-		 final String  pro=BoxlistProductop.getText().toUpperCase().trim();
-		 final String c= cantidadBox.getText().toUpperCase().trim();
-		 final double cant= Double.parseDouble(c); 
-		 final Date fec=BoxfechaCubrimiento.getValue();	
-		 DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");
-		 String fechaC=fmtDate.format(fec);
-		 final String  cc=BoxlistCentro.getText().toUpperCase().trim();
-		 final String obs= observacionesBox.getText().toUpperCase().trim();			 
+	 productoService.cargarProducto(new AsyncCallback<ArrayList<ProductoBase>>() {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			Window.alert("no logro  cargar los productos");
+		}
+
+		@Override
+		public void onSuccess(ArrayList<ProductoBase> result) {
+			// TODO Auto-generated method stub			
+			 displayProductosss(result);
+		}
 		 
-			 
-			 productoPedido.setText(i, 0, ped);
-			 productoPedido.setText(i, 3, pro);
-			 productoPedido.setText(i, 6, cant+"");
-			 productoPedido.setText(i, 9, fechaC);
-			 productoPedido.setText(i, 12, cc);
-			 productoPedido.setText(i, 15, obs);
-				 
-		 //pedidoLabel.setText(ped);
-		 
+	});
+	
+ }
+ private  void  displayProductosss(List<ProductoBase>p){
+	 Window.alert("la lista de producto es: "+p);
+	 final String pro=BoxlistProductop.getText().toUpperCase().trim();
+	 String po="";
+	 
+		for (ProductoBase pp:p){
+			
+			
+		if(pp.getDescripcion().equalsIgnoreCase(pro)){		
+			     po="hay algo";			     
+				}	
+		} 
 		
-		 //pedidoBox.setText("");
-		 i++;		 
-	  }
+		if(po.equalsIgnoreCase("")|| po==null){
+			Window.alert("lo sentimos pero el producto que ingreso no esta inventariado");
+			
+		}else{
+			centroService.cargarCentroCostos(new AsyncCallback<ArrayList<CentroCostos>>() {
+				
+				@Override
+				public void onSuccess(ArrayList<CentroCostos> result) {
+					// TODO Auto-generated method stub
+					displayCC(result);
+				}
+				
+				@Override
+				public void onFailure(Throwable caught) {
+					// TODO Auto-generated method stub					
+					Window.alert("No se pudo cargar centro de costo");
+				}
+			});
+			
+			
+		}
+	  } 
  
- private  void gurad(){
+ private  void  displayCC(List<CentroCostos>p){
 	 
+	 final String centro= BoxlistCentro.getText().toUpperCase().trim();
+	 String po="";
+	 
+ for (CentroCostos pp:p){
+	 
+		if(pp.getNombreCosto().equalsIgnoreCase(centro)){		
+			     po="hay algo";			     
+				}	
+		}
+ 
+ if(po.equalsIgnoreCase("")|| po==null){
+		Window.alert("El centro de costo no existe");
+ }else{
+	 addPedidoPro();
+	 }
+
+ }
+ 
+ 
+ 
+ private void addPedidoPro() { 
+	 
+	     int i=productoPedido.getRowCount();
+	     
+	     Window.alert("cantidad de filas"+i);
+		 final String ped= pedidoBox.getText().toUpperCase().trim();
+		 final String pro=BoxlistProductop.getText().toUpperCase().trim();
+		 final String c= cantidadBox.getText().toUpperCase().trim();			 
+		 final double cant= Double.parseDouble(c); 	 
+		 final int l=BoxlistDepto.getSelectedIndex();
+		 final String dep=BoxlistDepto.getItemText(l);		
+		
+		 
+		 tipoPedidoService.cargartpd(new AsyncCallback<ArrayList<TipoPedidoDpto>>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					// TODO Auto-generated method stub
+					Window.alert("no  pudo  traer nada");				
+				}
+				
+				@Override
+				public void onSuccess(ArrayList<TipoPedidoDpto> result) {
+					// TODO Auto-generated method stub				
+					//mostrarTipoDpto(result);		
+				 									
+					String palabra="";
+					 if(ped.length()==5){
+						 for(int o=0; o<=2; o++){				 
+							 
+							 palabra=palabra+ped.charAt(o);
+					 }
+						
+					 }
+					 
+					if (ped.length()==4){
+						 for(int o=0; o<=1; o++){		 
+					
+							 palabra=palabra+ped.charAt(o);
+					 }
+					
+					}
+					int i=0;			
+					for (TipoPedidoDpto un:result){						
+						
+						i=productoPedido.getRowCount();			  
+						
+						  if(palabra.equalsIgnoreCase(un.getCodigoPedido())&&  dep.equalsIgnoreCase(un.getCodigoDpto())){
+							  
+							 pedidoBox.setEnabled(false);
+							 BoxlistDepto.setEnabled(false);
+							 
+							  int diasCubrimiento=un.getDiasCubrimiento();							     
+							     Date fec=new  Date ();		
+								 int f=fec.getDate()+ diasCubrimiento;		
+								 Date fee= new  Date(fec.getYear(),fec.getMonth(),f);								
+								 BoxfechaCubrimiento.setValue(fee);	
+								 Date fu=new Date();
+								 DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");		
+								 String fechaC=fmtDate.format(fee);
+								 String feP=fmtDate.format(fu);
+								 
+								 final String cc=BoxlistCentro.getText().toUpperCase().trim();
+								 final String obs= observacionesBox.getText().toUpperCase().trim();				 
+								 final Button edit= new Button("EDITAR");	
+								 final Button eli= new Button("ELIMINAR");
+								 edit.setTitle(""+i);
+								 eli.setTitle(""+i);
+								
+										edit.addClickHandler(new ClickHandler() {											
+											@Override
+											public void onClick(ClickEvent event) {
+												// TODO Auto-generated method stub
+												Window.alert(edit.getText());
+												int id=Integer.parseInt(edit.getTitle());
+												Window.alert("el numero es"+id);
+												editarPed(id);												
+											}
+										});
+										eli.addClickHandler(new ClickHandler() {						
+											@Override
+											public void onClick(ClickEvent event) {
+												// TODO Auto-generated method stub	
+												
+											    int p=Integer.parseInt(eli.getTitle());
+												productoPedido.removeRow(p);			
+											
+													organizar();						
+												
+											
+											
+											}
+										});
+										
+		                        int po=i-2;
+		                        Window.alert("po es: "+po);
+									 productoPedido.setText(i+2, 0,po+"");	
+									 productoPedido.setText(i+2, 5, pro);
+									 productoPedido.setText(i+2, 25, cant+"");
+									 productoPedido.setText(i+2, 52, fechaC);
+									 productoPedido.setText(i+2, 58, cc);
+									 productoPedido.setText(i+2, 67, obs);
+									 productoPedido.setWidget(i+2, 100, edit);
+									 productoPedido.setWidget(i+2, 120, eli);
+									 productoPedido.setWidget(i+3, 90, add);
+									 productoPedido.setWidget(i+3, 5,  BoxlistProductop);
+									 productoPedido.setWidget(i+3, 25, cantidadBox);
+									 productoPedido.setWidget(i+3, 52, BoxfechaCubrimiento);
+									 productoPedido.setWidget(i+3, 58, BoxlistCentro);
+									 productoPedido.setWidget(i+3, 67, observacionesBox);
+									
+									 									
+									 
+								 i++;
+							
+								
+						  }						 
+						 
+						  }	
+					
+			
+
+					 if(i==2){
+						  
+						   Window.alert("EL DEPARTAMENTO QUE  SELECCIONO NO PERTENECE AL TIPO DE PEDIDO INGRESADO");
+				           }					 
+				}			 
+			});	 
+				 
+	  } 
+ 
+
+ private void eliminarPed(int m){	
+	
+		 productoPedido.removeRow(m); 		
+	
+	
+	
+ }
+
+ int jj=0;
+private  void gurad(){
+	
+	final String pedi=pedidoBox.getText().toUpperCase().trim();
+	
+	productopedidoService.buscarProductoPedido(pedi, new AsyncCallback<ProductoPedido>() {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+		    	
+		}
+
+		@Override
+		public void onSuccess(ProductoPedido result) {
+			// TODO Auto-generated method stub
+			jj=0;
+		}
+	});
+	
+	Window.alert("esto tieene la tabla "+productoPedido.getRowCount());
+	Window.alert("esto tiene jj \n"+jj);
+	
 	ArrayList<String>cen=new ArrayList<String>();
 	ArrayList<Double>cantidad=new ArrayList<Double>();
 	ArrayList<String>observaciones=new ArrayList<String>();
 	ArrayList<String>producto=new ArrayList<String>();	
 	ArrayList<Date>fe= new ArrayList<Date>();
-	Window.alert("esto tieene la tabla "+productoPedido.getRowCount());
-	int j=0;	
-	 final String pedi=productoPedido.getText(3,0);	 
-	 for(int k=2;k<=productoPedido.getRowCount(); k++){			 
-		 Window.alert("esto es: "+productoPedido.getText(k, 12));	 
-		
-		 cen.add(j, productoPedido.getText(k, 12));
-		 
-		 String c=productoPedido.getText(k, 6);
-		 double cant=Double.parseDouble(c);			 
-		 cantidad.add(j,cant);
-		 
-		 observaciones.add(j,productoPedido.getText(k,15));
-		 
-		 String f= productoPedido.getText(k, 9);
-		 DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");
-		 Date  fecha=fmtDate.parse(f);		 
-		 fe.add(j, fecha);
-		 
-		 producto.add(j,productoPedido.getText(k,3));
-		 
-		 Window.alert("fecha es:"+fe.toString());
-		 Window.alert("cantidad es:"+cantidad.toString());
-		 Window.alert("observaciones"+observaciones.toString());
-		 Window.alert("CENTRO ES:"+cen.toString());
-		 Window.alert("producto ES:"+producto.toString());
-		 Window.alert("guardo en "+j);
-		 if(j==productoPedido.getRowCount()-3){
-			
-			 gurad(pedi,producto,cantidad,fe,cen,observaciones);
-			 Window.alert("Termino el ciclo for :p"+"\n Pedido: "+pedi+"\n"+producto+"\n"+cantidad+"\n"+fe+"\n"+cen+"\n"+observaciones);	
-		 }
-		 j++;		 
-		 
-		 } 
- }
- 
- private  void gurad(String codigoPedido,ArrayList<String> producto,ArrayList<Double> cantidadProducto,
-		  ArrayList<Date> fechaCubrimiento, ArrayList<String> centro,
-			ArrayList<String> observaciones){
+	ArrayList<Date>fePed= new ArrayList<Date>();
+	/*final String fecho=pedFecha1.getText();
+	DateTimeFormat fmtDate1=DateTimeFormat.getFormat("dd/MM/yyyy");
+	Date  fechoo=fmtDate1.parse(fecho);*/	 
 	 
-	 productopedidoService.addProductoPedido(codigoPedido, producto, cantidadProducto, fechaCubrimiento, centro, observaciones, new AsyncCallback<Void>() {
+	final int l=BoxlistDepto.getSelectedIndex();
+	final String dep=BoxlistDepto.getItemText(l);	
+	
+	 
+	 for(int k=2; k<productoPedido.getRowCount()-1; k++){	
+		     Window.alert("el valor de tamano"+productoPedido.getRowCount());
+			 Window.alert("el valor de k"+k);
+			 Window.alert("el valor de jj"+jj);
+			 
+				cen.add(jj, productoPedido.getText(k,58));
+				 
+				 String c=productoPedido.getText(k, 25);
+				 double cant=Double.parseDouble(c);			 
+				 cantidad.add(jj,cant);
+				 
+				 observaciones.add(jj,productoPedido.getText(k,67));
+				 
+				 String f= productoPedido.getText(k, 52);
+				 DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");
+				 Date  fecha=fmtDate.parse(f);
+				 
+				 fe.add(jj, fecha);			
+				 
+				 Date fu=new Date();
+				 DateTimeFormat fmtDate2=DateTimeFormat.getFormat("dd/MM/yyyy");	
+				 String feP=fmtDate2.format(fu);
+				 pedFecha1.setText(feP);
+				 fePed.add(jj, fu);
+				 
+				 producto.add(jj,productoPedido.getText(k,5));	 			
+				 
+				 if(jj==productoPedido.getRowCount()-3){					 
+				
+					
+				     gurad(pedi,producto,cantidad,fe,cen,observaciones,dep,fePed);
+					 Window.alert("Termino el ciclo for :p"+"\n Pedido: "+pedi+"\n"+producto+"\n"+cantidad+"\n"+fe+"\n"+cen+"\n"+observaciones+"\n"+dep+"\n"+fePed+"");
+					 
+				 }				 
+				 jj++;		 
+		 } 
+ } 
+
+
+ private  void gurad(String codigoPedido, ArrayList<String> producto,
+			ArrayList<Double> cantidadProducto,
+			ArrayList<Date> fechaCubrimiento, ArrayList<String> centro,
+			ArrayList<String> observaciones, String departamento,
+			ArrayList<Date>fePed){
+	 
+	 productopedidoService.addProductoPedido(codigoPedido, producto, cantidadProducto, fechaCubrimiento, centro, observaciones, departamento, fePed, new AsyncCallback<Void>() {
 
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("no funciono"+caught);
+			Window.alert("no se logro almacenar");
 		}
-
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se guardo satisfactoriamente");
 		}
-		 
 	});
 	 
  } 
@@ -1351,7 +1813,8 @@ int i=2;
 	  existenciaPro.setText(0, 0, "GESTION DE EXISTENCIAS");
 	  existenciaPro.setText(1, 0, "PRODUCTO");
 	  existenciaPro.setText(1, 3, "CANTIDAD");
-	  existenciaPro.setText(1, 6, "FECHA");	
+	  existenciaPro.setText(1, 6, "FECHA");
+	 
 		 
 	   
 		addPanel.add(usu);
@@ -1381,8 +1844,7 @@ int i=2;
 	    cargarBodega();
 		
 	    
-		 agregarExistencia.addClickHandler(new  ClickHandler() {
-			
+		 agregarExistencia.addClickHandler(new  ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
 				// TODO Auto-generated method stub
@@ -1399,24 +1861,49 @@ int i=2;
 				
 			}
 		});		
+		
+		buscarExistencia.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				// TODO Auto-generated method stub
+				buscarExistencia();
+			}
+		});
   }
    
 
+  private  void buscarExistencia (){
+	  final  String produc=BoxlistProducto.getText().toUpperCase().trim();
+	  buscarExistencia(produc);
+  }
+  private   void  buscarExistencia(String  codigoProducto){
+	  existenciaService.buscarExistencia(codigoProducto,new AsyncCallback<ArrayList<Exixtencias>>() {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub
+			Window.alert("no encontro  nada");
+		}
+
+		@Override
+		public void onSuccess(ArrayList<Exixtencias> result) {
+			// TODO Auto-generated method stub
+			Window.alert("encontro");
+		}
+		  
+	});
+  }
   
   int  ex=existenciaPro.getRowCount();
   private  void  agregarExistencia(){
 	  Window.alert("hay"+ex);
 	  final int i=BoxlistBodega.getSelectedIndex();
 	  final String bodega=BoxlistBodega.getItemText(i);
-	  final  String produc=BoxlistProducto.getText().toUpperCase().trim();	 	
-	  final Date fec1=BoxFecha.getValue();		
-	  DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");
-	  String fechaC1=fmtDate.format(fec1);
-	  final String cant=Boxcantidadexi.getText().toUpperCase().trim();		
-	  final  double cantidad=Double.parseDouble(cant);  	 
+	  final  String produc=BoxlistProducto.getText().toUpperCase().trim();	
+	  final String nombre=Boxcantidadexi.getText().toUpperCase().trim(); 	  
 	  existenciaPro.setText(ex+2, 0, produc);
-	  existenciaPro.setText(ex+2, 3, cantidad+"");
-	  existenciaPro.setText(ex+2, 6, fechaC1);
+	  existenciaPro.setText(ex+2, 3, nombre);	
       ex++;      	 	
   }  
 
@@ -1425,31 +1912,32 @@ int i=2;
 	  
 	  final int i=BoxlistBodega.getSelectedIndex();
 	  final String bodega=BoxlistBodega.getItemText(i);
-	  ArrayList<String>pro= new ArrayList<String>();
-	  ArrayList<Double>cant=new ArrayList<Double>();
-	  ArrayList<Date>fec11= new ArrayList<Date>();
-		
+	  final Date fe=BoxFecha.getValue();
+	  String pro;
+	  String  nombre;
+	
+	  
 		Window.alert("tamno es: "+existenciaPro.getRowCount());
 		
 		 for(int k=2;k<=existenciaPro.getRowCount(); k++){			 
 			 Window.alert("j "+k); 
 			 Window.alert("tamno es: "+existenciaPro.getRowCount());
-			 	
-			 pro.add(existenciaPro.getText(k, 0));
+			 pro=existenciaPro.getText(k, 0); 
+			 nombre=existenciaPro.getText(k, 3); 
+			 double m=Double.parseDouble(nombre);
 			 
-			 String c=existenciaPro.getText(k, 3);
-			 double cantidad1=Double.parseDouble(c);
-		     cant.add(cantidad1);
-			 
-			 String f1= existenciaPro.getText(k, 6);
-			 DateTimeFormat fmtDate=DateTimeFormat.getFormat("dd/MM/yyyy");
-			 Date  fechaActual=fmtDate.parse(f1);		 
-			 fec11.add(fechaActual);		 
+			 if (j==k){
+				 Window.alert("esto  va a guardar: "+bodega+"\n"+pro+"\n"+nombre);
+				// crearExistencia(bodega,pro,nombre);
+			 }
 			
-			 }	 
-		 Window.alert("esto  va a guardar: "+bodega+"\n"+pro+"\n"+cant+"\n"+fec11);
-		 
-		
+			 }	
+  }
+  
+  
+  private  void crearExistencia (String codigoBodega, String codigoProducto,
+			String  cantidad,Date fecha){
+	 
   }
   
   private  void cargarProductos(){
@@ -1457,13 +1945,12 @@ int i=2;
 	   {
 		  @Override
 			public void onFailure(Throwable caught) {
-				Window.alert("la  und  no exite");			
+				Window.alert("Hubo  un error  al  cargar  los Productos");			
 			}
 			@Override
 			public void onSuccess(ArrayList<ProductoBase> result) {
-				// TODO Auto-generated method stub
-				Window.alert("la  und  si exite");
-							displayPro(result);				
+				// TODO Auto-generated method stub				
+				displayPro(result);				
 			
 			}
 		});		
@@ -1474,14 +1961,13 @@ int i=2;
 
 		  @Override
 			public void onFailure(Throwable caught) {
-				Window.alert("la  und  no exite");			
+				Window.alert("Hubo  un  problema  al  cargar  la  lista de  Unidades");			
 			}
 
 			@Override
 			public void onSuccess(ArrayList<UndConsumo> result) {
-				// TODO Auto-generated method stub
-				Window.alert("la  pedido si exite y el tamano es: "+result.size());
-							displayUnd(result);							
+				// TODO Auto-generated method stub				
+				displayUnd(result);						
 			
 			}
 		});
@@ -1639,13 +2125,17 @@ int i=2;
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("no se  logro encontrar el prodcuto");
+			Window.alert("no selogro encontrar el prodcuto");
 		}
 
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("se elimino");
+			Window.alert("se elimino el producto");
+			Boxproducto.setText("");
+			Boxdesc.setText("");
+			Boxcantidad.setText("");
+			Boxprecio.setText("");
 		}
 		  
 	});
@@ -1675,6 +2165,10 @@ int i=2;
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("modifico satisfactoriamente");
+			Boxproducto.setText("");
+			Boxdesc.setText("");
+			Boxcantidad.setText("");
+			Boxprecio.setText("");
 		}
 	});
   }
@@ -1710,8 +2204,7 @@ int i=2;
 			Boxprecio.setText("");
 		}		  
 	});
-  }
-  
+  }  
   
   private void mostrarBodega(){
 	  addPanel.add(lbodega);
@@ -1734,8 +2227,7 @@ int i=2;
 	  mainPanel.add(addPanel2);	 
 	  mainPanel.add(addPanel3);	 
 	  mainPanel.add(addPanel4);	 
-	  empresaBox.addItem("PSF");	
-	  empresaBox.addItem("EX");	
+	  cargarEmpresas();
 	  RootPanel.get("stockList").add(mainPanel);	
 	 
 	 
@@ -1774,6 +2266,30 @@ int i=2;
 	});
     
   }
+  
+  private  void  cargarEmpresas(){
+	  empresaService.listTodos(new AsyncCallback<ArrayList<Empresa>>() {
+
+		@Override
+		public void onFailure(Throwable caught) {
+			// TODO Auto-generated method stub			
+		}
+
+		@Override
+		public void onSuccess(ArrayList<Empresa> result) {
+			// TODO Auto-generated method stub
+			displayEmpresas(result);
+		}
+		  
+	});
+  }
+  
+  private  void  displayEmpresas(List<Empresa>und){
+		for (Empresa un:und){	
+		empresaBox.addItem(un.getCodigoEmpresa());			
+		}  	
+	  }
+  
   private  void  buscarBodega(){
 	  final String  codigo= codBodegaBox.getText().toUpperCase().trim();
 	  buscarBodega(codigo);
@@ -1793,12 +2309,12 @@ int i=2;
 			bodegaBox.setText(result.getNombre());				
 				if(result.getCodigoEmpresa().equalsIgnoreCase("PSF")){
 					
-					Window.alert("es igual a psf");	
+					
 					empresaBox.setItemText(0, result.getCodigoEmpresa());
 					empresaBox.setItemText(1, "EX");
 					
 				}else{
-					Window.alert("es igual a ex");	
+						
 					empresaBox.setItemText(0, result.getCodigoEmpresa());
 					empresaBox.setItemText(1, "PSF");
 				}
@@ -1825,6 +2341,8 @@ int i=2;
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se  elimino  satisfactoriamente");
+			codBodegaBox.setText("");
+			bodegaBox.setText("");
 		}
 	});
   }
@@ -1839,12 +2357,13 @@ int i=2;
   }
   
   private  void modificarBodega(String  codigo,String nombre, String empresa){
-	  bodegaService.modificarBodega(codigo, nombre, empresa, new AsyncCallback<Void>() {
-		
+	  bodegaService.modificarBodega(codigo, nombre, empresa, new AsyncCallback<Void>() {		
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se modifico Exitosamente");
+			codBodegaBox.setText("");
+			bodegaBox.setText("");
 		}
 		
 		@Override
@@ -1859,8 +2378,7 @@ int i=2;
 	  final String  codigo= codBodegaBox.getText().toUpperCase().trim();
 	  final String  nombre= bodegaBox.getText().toUpperCase().trim();
 	  final int i= empresaBox.getSelectedIndex();
-	  final String emp=empresaBox.getItemText(i);
-	 
+	  final String emp=empresaBox.getItemText(i);	 
 	  
 	  if(emp!="" && codigo!="" && nombre!=""){		  
 		   empresaService.e(emp, new AsyncCallback<Empresa>() {
@@ -1872,30 +2390,27 @@ int i=2;
 			@Override
 			public void onSuccess(Empresa result) {	
 				empresa.add(result);
-				crearBodega(codigo,nombre,result.getCodigoEmpresa());
-				Window.alert("esto es lo que va a guardar: "+codigo+"-"+nombre+"-"+result);
+				crearBodega(codigo,nombre,result.getCodigoEmpresa());				
 			}			
 		});
-	  }	else {
-		  
+	  }	else {		  
 		  Window.alert("LLenar  los campos");
 	  }
   }  
+  
   private  void crearBodega(String  codigo,String nombre,String  codigoEmpresa ){
-		Window.alert("estoviene: "+codigo+"-"+nombre+"-"+ codigoEmpresa );
-	  bodegaService.addBodega(codigo, nombre, codigoEmpresa , new AsyncCallback<Void>() {
-		
+	  	  bodegaService.addBodega(codigo, nombre, codigoEmpresa , new AsyncCallback<Void>() {		
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			Window.alert("no guardo: "+caught);
+			Window.alert("Lo sentimos  pero la  Bodega no pudo ser Almacenada ");
 		}
-
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("guardo exitosamente");
-			
+			Window.alert("guardo exitosamente");		
+			codBodegaBox.setText("");
+			bodegaBox.setText("");			
 		}
 		  
 	});
@@ -1916,6 +2431,7 @@ int i=2;
 	  addPanel3.add(modificarEmpresa);	
 	  addPanel4.add(usu);
 	  addPanel4.add(usuario);
+	  addPanel4.add(todaEmpresa);
 	  mainPanel.add(signOutLink);
 	  mainPanel.add(addPanel);
 	  mainPanel.add(addPanel1);
@@ -1931,8 +2447,7 @@ int i=2;
 			addCrear();			
 		}
 	});	  
-	  busBoton.addClickHandler(new ClickHandler() {		
-		 
+	  busBoton.addClickHandler(new ClickHandler() {			 
 			@Override
 			public void onClick(ClickEvent event) {			
 			
@@ -1967,12 +2482,33 @@ int i=2;
 			
 		}
 	});
+	  
+	  todaEmpresa.addClickHandler(new ClickHandler() {		
+		@Override
+		public void onClick(ClickEvent event) {			
+		 todasEmpresas();
+		}
+	});
   } 
   
+    private  void  todasEmpresas(){
+    	empresaService.listTodos( new AsyncCallback<ArrayList<Empresa>>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				Window.alert("no  funciono");
+			}
+			@Override
+			public void onSuccess(ArrayList<Empresa> result) {
+				// TODO Auto-generated method stub
+				Window.alert("funciono"+result.toString());
+			}    		
+		});
+    }
+    
   private  void mostrar(){
 	  final String codigo= codigoBox.getText().toUpperCase().trim();
-	  mostrar(codigo);
-	  
+	  mostrar(codigo);  
   }
   
   private  void mostrar(String codigo){
@@ -1989,8 +2525,7 @@ int i=2;
 		}
 	});
   }
-
-
+  
   private  void modificarEmpresa(){
 	  final String codigo= codigoBox.getText().toUpperCase().trim();
 	  final String nombre= nombreBox.getText().toUpperCase().trim();
@@ -2099,6 +2634,7 @@ int i=2;
 	 final String tipo= tipoBox.getText().toUpperCase().trim();
 	 eliminarTipo(tipo);	 
  }
+ 
  private void eliminarTipo(String tipo){
 	tipoService.elminarTipoUsuario(tipo,new AsyncCallback<Void>() {
 		@Override
@@ -2106,10 +2642,13 @@ int i=2;
 			// TODO Auto-generated method stub
 			Window.alert("No se pudo eliminar el Tipo de Usuario");
 			}
+		
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("Se elimino satisfactoriamente el Tipo de Usuario");			
+			Window.alert("Se elimino satisfactoriamente el Tipo de Usuario");	
+		    tipoBox.setText("");
+		    usuBox.setText("");
 		}
 	});
  }
@@ -2172,24 +2711,20 @@ int i=2;
 		}
 	});
 	 
-	 eliminarCentro.addClickHandler(new ClickHandler() {
-		
+	 eliminarCentro.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-			
+			// TODO Auto-generated method stub			
 			eliminarCentro();
 		}
 	});
 	 
-	 buscarCosto.addClickHandler(new ClickHandler() {
-		
+	 buscarCosto.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-			
+			// TODO Auto-generated method stub			
 			buscarCosto();
-		}
+			}
 	});	 
  }
  
@@ -2202,7 +2737,8 @@ int i=2;
 	centroService.c(codigo,new AsyncCallback<CentroCostos>() {
 		@Override
 		public void onFailure(Throwable caught) {
-			// TODO Auto-generated method stub			
+			// TODO Auto-generated method stub	
+			Window.alert("Lo sentimos pero el codigo del Centro de Costo ingresado no exixte");
 		}
 		@Override
 		public void onSuccess(CentroCostos result) {
@@ -2230,7 +2766,9 @@ int i=2;
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("se elimino satisfactoriamente");			
+			Window.alert("se elimino satisfactoriamente");
+			codBox.setText("");
+			costoBox.setText("");
 		}
 	});
  }
@@ -2243,21 +2781,20 @@ int i=2;
  
  private  void modificarCentro (String codCentro, String costo){
 	 centroService.modificarCentroCostos(codCentro, costo, new AsyncCallback<Void>() {
-
 		@Override
 		public void onFailure(Throwable caught) {
-			Window.alert("no se  modifico ya que parece q no exixte");
-			
-		}
-
+			Window.alert("El Centro de  Costo se logro modificar");			
+		}		
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("se modifico satisfactoriamente");
-			
+			Window.alert("Se Modifico Satisfactoriamente");
+			codBox.setText("");
+			costoBox.setText("");
 		}
 	});
  }
+ 
  
  
  
@@ -2280,8 +2817,7 @@ int i=2;
 	 mainPanel.add(addPanel3);
 	 RootPanel.get("stockList").add(mainPanel);	
 	 codeptBox.setFocus(true);	
-	 
-	
+	 	
 	 
 	 crearDptBoton.addClickHandler(new ClickHandler() {		
 		@Override
@@ -2356,7 +2892,9 @@ int i=2;
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("se  ha  eliminado el departamento satisfactoriamente");			
+			Window.alert("se  ha  eliminado el departamento satisfactoriamente");	
+			codeptBox.setText("");
+			deptBox.setText("");
 		}
 	});
  }
@@ -2369,17 +2907,17 @@ int i=2;
  
  private  void modificarDpto(String codpt,String dpto){
 	 dptoService.modificarDepartamento(codpt, dpto,new AsyncCallback<Void>() {
-
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
 			Window.alert("No se pudo modificar");		
 		}
-
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("Se modifico satisfactoriamente");
+			codeptBox.setText("");
+			deptBox.setText("");
 		}
 	} );
  }
@@ -2441,25 +2979,22 @@ int i=2;
  }
  
  private  void buscarLugar(){
-	 final String codigo=codlugarBox.getText().toUpperCase().trim();
+	 final String codigo=codlugarBox.getText().toUpperCase().trim();	
 	 buscarLugar(codigo);
  }
  private  void buscarLugar(String codigo){
-	 lugarService.l(codigo,new AsyncCallback<LugarPedido>() {
-
+	 lugarService.l(codigo, new AsyncCallback<LugarPedido>() {		 
 		@Override
 		public void onFailure(Throwable caught) {
-			// TODO Auto-generated method stub			
+			// TODO Auto-generated method stub
+			Window.alert("No se  logro Encontrar el Lugar");
 		}
-
 		@Override
 		public void onSuccess(LugarPedido result) {
 			// TODO Auto-generated method stub
 			codlugarBox.setText(result.getCodigoLugar());
-			lugtarBox.setText(result.getNombreLugar()); 
-			
-		}
-		 
+		    lugtarBox.setText(result.getNombreLugar());			
+		}		 
 	});
  }
  private void eliminarLugar(){
@@ -2478,7 +3013,9 @@ int i=2;
 		@Override
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
-			Window.alert("se elimino satisfactoriemnte");			
+			Window.alert("se elimino satisfactoriemnte");	
+			codlugarBox.setText("");
+			lugtarBox.setText("");	
 		}
 	});
  }
@@ -2503,13 +3040,12 @@ int i=2;
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se modifico satisfactoriamente");
-			
+			codlugarBox.setText("");
+			lugtarBox.setText("");	
 		}
 		 
 	});
- }
- 
- 
+ } 
  
  private void mostrarUndConsumo(){
 	 addPanel.add(lunidadconsumo);
@@ -2575,7 +3111,8 @@ int i=2;
 
 		@Override
 		public void onFailure(Throwable caught) {
-			// TODO Auto-generated method stub			
+			// TODO Auto-generated method stub		
+			Window.alert("No se  logro  Encontrar");
 		}
 
 		@Override
@@ -2583,6 +3120,7 @@ int i=2;
 			// TODO Auto-generated method stub			
 			idundBox.setText(result.getIdUnd());
 			unidadBox.setText(result.getNombreUnd());
+			
 		}
 	});
 	 
@@ -2604,6 +3142,8 @@ int i=2;
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se elimino satisfactoriamente");
+			idundBox.setText("");
+			unidadBox.setText("");			
 		}
 	});
  }
@@ -2627,7 +3167,8 @@ int i=2;
 		public void onSuccess(Void result) {
 			// TODO Auto-generated method stub
 			Window.alert("se  modifico satisfactoriamente");
-			
+			idundBox.setText("");
+			unidadBox.setText("");	
 		}
 	});
  }
@@ -2671,13 +3212,11 @@ int i=2;
 	 final String nomDpto=deptBox.getText().toUpperCase().trim();
 	 codeptBox.setFocus(true);
 	 if(!codDpto.equalsIgnoreCase("") && !nomDpto.equalsIgnoreCase("")){
-		 Window.alert("Guardo satisfactoriamente ");       		 
+		 addDpto(codDpto,nomDpto);
 	}else{    	
     	Window.alert("Porfavor  llene los campos"); 
-    }	 
-	 codeptBox.setText("");	
-	 costoBox.setText("");    		
-	 addDpto(codDpto,nomDpto);
+    }   	
+	 
 	 
  }
  
@@ -2686,13 +3225,10 @@ int i=2;
 	 final String nomLugar=lugtarBox.getText().toUpperCase().trim();
 	 codlugarBox.setFocus(true);
 	 if(!codLugar.equalsIgnoreCase("") && !nomLugar.equalsIgnoreCase("")){
-		 Window.alert("Guardo satisfactoriamente ");       		 
+		 addLugar(codLugar,nomLugar); 
 	}else{    	
     	Window.alert("Porfavor  llene los campos"); 
-    }	 
-	 codlugarBox.setText("");	
-	 lugtarBox.setText("");    		
-	 addLugar(codLugar,nomLugar);
+    }
 	 
  }
  
@@ -2717,14 +3253,13 @@ int i=2;
     	codigoBox.setFocus(true);  	
     	
     	if(!codigo.equalsIgnoreCase("") && !nombre.equalsIgnoreCase("")){
-    		 Window.alert("Guardo satisfactoriamente ");       		 
+    		 addCrear(codigo,nombre); 
     	}else{
         	
         	Window.alert("Porfavor  llene los campos"); 
         }
-    	   codigoBox.setText("");	
-    	   nombreBox.setText("");    		
-           addCrear(codigo,nombre); 		
+    	   		
+          		
     	
     }
    
@@ -2739,16 +3274,16 @@ int i=2;
 			@Override
 			public void onFailure(Throwable caught) {
 				codigoBox.setText("");
-				Window.alert("lo siento pero no se pudo eliminar");		
+				Window.alert("**** La empresa que usted  desea no se pudo  eliminar  debe  ser que no  exista o  su codigo  este mal ****");		
 			}
-
+			
 			@Override
 			public void onSuccess(Void result) {
 				if (result==null){
 					codigoBox.setText("");
-					Window.alert("se ha  Eliminado satisfactoriamente: ");					
-				}
-				
+					nombreBox.setText("");
+					Window.alert("La Empresa se ha Eliminado Satisfactoriamente: ");					
+				}	
 				
 			}
 		});
@@ -2778,17 +3313,16 @@ int i=2;
     
     private  void addCentroCotos(final String codCosto, final String nomCostos ){
     	centroService.addCentroCostos(codCosto, nomCostos, new AsyncCallback<Void>() {
-
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
-			}
-
+				Window.alert("No  se  logro Guardar  el Centro de  costo");
+			}			
 			@Override
 			public void onSuccess(Void result) {
 				// TODO Auto-generated method stub
 				guardarCentro (codCosto, nomCostos);
+				Window.alert("Se Guardo Satisfactoriamente el Centro de Costo");
 			}
 		});
     	
@@ -2796,17 +3330,19 @@ int i=2;
     
     private void addDpto(final String codDpto, final String nomDpto){
     	dptoService.addDepartamento(codDpto, nomDpto, new AsyncCallback<Void>() {
-
+    		
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
-			}
-
+				Window.alert("No se logro  Guardar");
+				}
+			
 			@Override
 			public void onSuccess(Void result) {
 				guardarDpto(codDpto,nomDpto);
-				
+				Window.alert("Se guardop  Satisfactoriamente el Departamento");
+				 codeptBox.setText("");	
+				 costoBox.setText(""); 
 			}
 		});
     	
@@ -2818,13 +3354,15 @@ int i=2;
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			
+			Window.alert("no  se logro guardar");
 		}
 
 		@Override
 		public void onSuccess(Void result) {
 			guardarLugar(codLugar,nombLugar);
-			
+			Window.alert("Se guardo Satisfactoriamente el Lugar");
+			codlugarBox.setText("");	
+			lugtarBox.setText("");  
 		}
 	});
     }
@@ -2852,13 +3390,14 @@ int i=2;
 		@Override
 		public void onFailure(Throwable caught) {
 			// TODO Auto-generated method stub
-			 Window.alert("hubo un  gran errror"+ caught);
+			 Window.alert("NO  SE LOGRO  GUARDAR LA EMPRESA");
 		}
 
 		@Override
 		public void onSuccess(String result) {
-			Window.alert("es fue lo q  guardo"+result);
-			
+			Window.alert("LA  EMPRESA: "+ result+"  HA  SIDO  ALMACENADA  CON EXITO");
+			  codigoBox.setText("");	
+	    	  nombreBox.setText("");  
 		}
     	
 	});

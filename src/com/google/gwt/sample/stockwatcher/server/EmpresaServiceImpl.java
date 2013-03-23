@@ -1,12 +1,18 @@
 package com.google.gwt.sample.stockwatcher.server;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.logging.Logger;
+
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 
 import com.google.gwt.sample.stockwatcher.client.EmpresaService;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 public class EmpresaServiceImpl extends RemoteServiceServlet implements
@@ -75,21 +81,29 @@ public ArrayList<Empresa> cargarEmpresa(){
 	Empresa u1= pm.getObjectById(Empresa.class, und1.getCodigoEmpresa());
 	if(u1!=null){
 		un.add(u1);
-	}
-	
+	}	
 	Empresa  u2= pm.getObjectById(Empresa.class, und2.getCodigoEmpresa());
 	if(u2!=null){
 		un.add(u2);
-	}
-	
-	
+	}	
 	return un;
-
 }
 
-
-
-
+@Override
+public ArrayList<Empresa> listTodos() {	
+	PersistenceManager pm = getPersistenceManager();
+	Empresa a=null;
+	ArrayList<Empresa>aa= new ArrayList<Empresa>();
+	Extent extent = pm.getExtent(Empresa.class, false);
+	Iterator it = extent.iterator();
+	while(it.hasNext()) {
+		 a = (Empresa) it.next();
+		 aa.add(a);
+	}
+	extent.closeAll();
+	pm.close(); 
+	return aa;
+}
 
 }
 

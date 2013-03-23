@@ -22,5 +22,7 @@ public interface ProductoBaseService extends RemoteService{
 	void modificarProductoBase(String codigoProducto, String descripcion,
 			double cantidad, double precio, String idUnd);
 
+	ArrayList<ProductoBase> cargarProductico(int k, String descripcion);
+
 	
 }

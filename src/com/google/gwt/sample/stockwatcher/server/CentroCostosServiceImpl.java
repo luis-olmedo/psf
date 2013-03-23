@@ -2,7 +2,10 @@ package com.google.gwt.sample.stockwatcher.server;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Logger;
+
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -59,28 +62,21 @@ public CentroCostos c(String codigo){
 	return c;
 }
 
+
 @Override
 public ArrayList<CentroCostos> cargarCentroCostos(){
 	PersistenceManager pm = getPersistenceManager();
-	ArrayList<CentroCostos>un=new ArrayList<CentroCostos>();
-	CentroCostos und1=new CentroCostos("1001","MOTO");
-	CentroCostos und2=new CentroCostos("1002","KUBOTA");
-	CentroCostos und3=new CentroCostos("1003","JOHN DEERE");	
-	
-	CentroCostos u1= pm.getObjectById(CentroCostos.class, und1.getCodigoCosto());
-	if(u1!=null){
-		un.add(u1);
-	}
-	CentroCostos u2= pm.getObjectById(CentroCostos.class, und2.getCodigoCosto());
-	if(u2!=null){
-		un.add(u2);
-	}
-	CentroCostos u3= pm.getObjectById(CentroCostos.class, und3.getCodigoCosto());
-	if(u3!=null){
-		un.add(u3);
-	}
-	
-	return un;
+	CentroCostos a=null;
+	ArrayList<CentroCostos>aa= new ArrayList<CentroCostos>();
+	Extent extent = pm.getExtent(CentroCostos.class, false);
+	Iterator it = extent.iterator();
+	while(it.hasNext()) {
+		 a = (CentroCostos) it.next();
+		 aa.add(a);
+		 }
+	extent.closeAll();
+	pm.close(); 
+	return aa;
 
 }
 

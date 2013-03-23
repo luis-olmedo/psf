@@ -3,11 +3,20 @@ package com.google.gwt.sample.stockwatcher.client;
 import java.util.ArrayList;
 import java.util.Date;
 
+
+import com.google.gwt.sample.stockwatcher.server.Exixtencias;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public interface ExistenciaServiceAsync {
+public interface ExistenciaServiceAsync {	
+
+	void getExistencia(AsyncCallback<ArrayList<Exixtencias>> callback);
+
+
+	void buscarExistencia(String codigoProducto,
+			AsyncCallback<ArrayList<Exixtencias>> callback);
+
 	void addExistencia(String codigoBodega, ArrayList<String> codigoProducto,
-			ArrayList<Date> fecha, ArrayList<String> cantidad,
-			AsyncCallback<Void> callback);
+			ArrayList<String> cantidad, Date fecha, AsyncCallback<Void> callback);
+
 
 }

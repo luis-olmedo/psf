@@ -21,4 +21,7 @@ public interface ProductoBaseServiceAsync {
 
 	void elminarProductoBase(String codigo, AsyncCallback<Void> callback);
 
+	void cargarProductico(int k, String descripcion,
+			AsyncCallback<ArrayList<ProductoBase>> callback);
+
 }

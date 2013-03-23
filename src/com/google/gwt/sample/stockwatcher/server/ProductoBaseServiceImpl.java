@@ -1,11 +1,14 @@
 package com.google.gwt.sample.stockwatcher.server;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Logger;
 
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
 
 import com.google.gwt.sample.stockwatcher.client.CentroCostoService;
 import com.google.gwt.sample.stockwatcher.client.ProductoBaseService;
@@ -36,27 +39,17 @@ public class ProductoBaseServiceImpl extends RemoteServiceServlet implements Pro
 		@Override
 		public ArrayList<ProductoBase> cargarProducto(){
 			PersistenceManager pm = getPersistenceManager();
-			ArrayList<ProductoBase>un=new ArrayList<ProductoBase>();
-			ProductoBase prod1=new ProductoBase("024","GASOLINA",5000,8000,"UND");
-			ProductoBase prod2=new ProductoBase("025","ACP",1000,5000,"LIT");
-			ProductoBase prod3=new ProductoBase("026","agua",1000,5000,"LIT");
-						
-			ProductoBase pro1= pm.getObjectById(ProductoBase.class, prod1.getCodigoProducto());
-			if(prod1!=null){
-				
-					un.add(pro1);			
-			
-			}
-			ProductoBase pro2= pm.getObjectById(ProductoBase.class, prod2.getCodigoProducto());
-			if(prod2!=null){				
-					un.add(pro2);				
-			}			
-			
-			ProductoBase pro3= pm.getObjectById(ProductoBase.class, prod3.getCodigoProducto());
-			if(prod3!=null){				
-					un.add(pro3);				
-			}		
-			return un;
+			ProductoBase a=null;
+			ArrayList<ProductoBase>aa= new ArrayList<ProductoBase>();
+			Extent extent = pm.getExtent(ProductoBase.class, false);
+			Iterator it = extent.iterator();
+			while(it.hasNext()) {
+				 a = (ProductoBase) it.next();
+				 aa.add(a);
+				 }
+			extent.closeAll();
+			pm.close(); 
+			return aa;
 
 		}
 		
@@ -87,6 +80,29 @@ public class ProductoBaseServiceImpl extends RemoteServiceServlet implements Pro
 				ProductoBase pb = pm.getObjectById(ProductoBase.class, codigo);
 				pm.deletePersistent(pb);
 			}
+		 
+		 @Override
+		 public ArrayList<ProductoBase>cargarProductico(int k,String descripcion){
+				PersistenceManager pm = getPersistenceManager();
+				ProductoBase resultado=null,detached=null;
+				ArrayList<ProductoBase>un=new ArrayList<ProductoBase>();
+				Query q= pm.newQuery(ProductoBase.class);	
+				q.setFilter("descripcion==:descripcion");
+				q.setUnique(true);
+				  try{						
+					  resultado=(ProductoBase)q.execute(descripcion);					 
+						  if(resultado!=null){								    
+								  detached=pm.detachCopy(resultado);								  
+								  un.add(detached);
+								  }							 
+				  }catch (Exception e){
+					  e.printStackTrace();
+				  }finally{
+					  pm.close();
+					  q.closeAll();
+				  }
+				  return un;
+			}	 
 		
 		
 	

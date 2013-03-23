@@ -2,7 +2,10 @@ package com.google.gwt.sample.stockwatcher.server;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Logger;
+
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -42,20 +45,18 @@ public class BodegaServiceImpl extends RemoteServiceServlet implements BodegaSer
 	  
 	  @Override
 		public ArrayList<Bodega> cargarBodega(){
-			PersistenceManager pm = getPersistenceManager();
-			ArrayList<Bodega>un=new ArrayList<Bodega>();
-			Bodega prod1=new Bodega("01","001","PSF");
-			Bodega prod2=new Bodega("02","002","EX");		
-						
-			Bodega pro1= pm.getObjectById(Bodega.class, prod1.getCodigoBodega());
-			if(prod1!=null){
-				un.add(pro1);
-			}			
-			Bodega pro2= pm.getObjectById(Bodega.class, prod2.getCodigoBodega());
-			if(prod2!=null){
-				un.add(pro2);
-			}				
-			return un;
+		    PersistenceManager pm = getPersistenceManager();
+			Bodega a=null;
+			ArrayList<Bodega>aa= new ArrayList<Bodega>();
+			Extent extent = pm.getExtent(Bodega.class, false);
+			Iterator it = extent.iterator();
+			while(it.hasNext()) {
+				 a = (Bodega) it.next();
+				 aa.add(a);
+				 }
+			extent.closeAll();
+			pm.close(); 
+			return aa;
 		}		  
 	  
 	  @Override

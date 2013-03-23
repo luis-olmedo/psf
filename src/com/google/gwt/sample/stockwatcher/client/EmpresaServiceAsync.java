@@ -23,6 +23,8 @@ public interface EmpresaServiceAsync {
 
 	void cargarEmpresa(AsyncCallback<ArrayList<Empresa>> callback);
 
+	void listTodos(AsyncCallback<ArrayList<Empresa>> callback);
+
 
 	
 

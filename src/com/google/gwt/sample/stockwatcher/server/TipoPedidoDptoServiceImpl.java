@@ -1,5 +1,9 @@
 package com.google.gwt.sample.stockwatcher.server;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -47,5 +51,22 @@ public class TipoPedidoDptoServiceImpl extends RemoteServiceServlet implements T
 				PersistenceManager pm = getPersistenceManager();
 				TipoPedidoDpto tpd = pm.getObjectById(TipoPedidoDpto.class, codigoPedido);
 				pm.deletePersistent(tpd);
+			}
+		  
+		  @Override
+		  public ArrayList<TipoPedidoDpto> cargartpd(){
+				PersistenceManager pm = getPersistenceManager();
+				TipoPedidoDpto a=null;
+				ArrayList<TipoPedidoDpto>aa= new ArrayList<TipoPedidoDpto>();
+				Extent extent = pm.getExtent(TipoPedidoDpto.class, false);
+				Iterator it = extent.iterator();
+				while(it.hasNext()) {
+					 a = (TipoPedidoDpto) it.next();
+					 aa.add(a);
+					 }
+				extent.closeAll();
+				pm.close(); 
+				return aa;
+
 			}
 }

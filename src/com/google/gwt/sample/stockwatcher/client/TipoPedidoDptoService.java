@@ -1,5 +1,7 @@
 package com.google.gwt.sample.stockwatcher.client;
 
+import java.util.ArrayList;
+
 import com.google.gwt.sample.stockwatcher.server.TipoPedidoDpto;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
@@ -16,5 +18,7 @@ public interface TipoPedidoDptoService extends RemoteService {
 			String lugarPedido, String codigoEmpresa, int diasCubrimiento);	
 
 	void elminarTipoPedidoDpto(String codigoPedido);
+
+	ArrayList<TipoPedidoDpto> cargartpd();
 
 }

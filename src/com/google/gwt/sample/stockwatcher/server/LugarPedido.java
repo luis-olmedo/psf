@@ -17,7 +17,8 @@ public class LugarPedido implements Serializable {
 	String nombreLugar;
 	
     public LugarPedido (){
-		
+		getCodigoLugar();
+		getNombreLugar();
 	}
     
 	public LugarPedido(String codigoLugar, String nombreLugar) {
@@ -41,6 +42,7 @@ public class LugarPedido implements Serializable {
 	public void setNombreLugar(String nombreLugar) {
 		this.nombreLugar = nombreLugar;
 	}
+	
 	
 	@Override
 	public String toString() {

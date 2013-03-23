@@ -1,8 +1,10 @@
 package com.google.gwt.sample.stockwatcher.server;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Logger;
 
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -33,11 +35,7 @@ public class UndConsumoServiceImpl   extends RemoteServiceServlet implements Und
 	    }		
 	}
 	
-	public void elminarUndConsumo(String idUnd){
-		PersistenceManager pm = getPersistenceManager();
-		TipoUsuario t= pm.getObjectById(TipoUsuario.class,idUnd);
-		pm.deletePersistent(t);
-	}
+	
 
 	@Override
 	public void modificarUndConsumo(String idUnd, String nombreUnd) {
@@ -62,26 +60,27 @@ public class UndConsumoServiceImpl   extends RemoteServiceServlet implements Und
 	@Override
 	public ArrayList<UndConsumo> cargarUnd(){
 		PersistenceManager pm = getPersistenceManager();
-		ArrayList<UndConsumo>un=new ArrayList<UndConsumo>();
-		UndConsumo und1=new UndConsumo("LIT","LITRO");
-		UndConsumo und2=new UndConsumo("PAR","PAR");
-		UndConsumo und3=new UndConsumo("UND","UNIDAD");	
-		
-		UndConsumo u1= pm.getObjectById(UndConsumo.class, und1.getIdUnd());
-		if(u1!=null){
-			un.add(u1);
-		}
-		UndConsumo u2= pm.getObjectById(UndConsumo.class, und2.getIdUnd());
-		if(u2!=null){
-			un.add(u2);
-		}
-		UndConsumo u3= pm.getObjectById(UndConsumo.class, und3.getIdUnd());
-		if(u3!=null){
-			un.add(u3);
-		}
-		
-		return un;
+		UndConsumo a=null;
+		ArrayList<UndConsumo>aa= new ArrayList<UndConsumo>();
+		Extent extent = pm.getExtent(UndConsumo.class, false);
+		Iterator it = extent.iterator();
+		while(it.hasNext()) {
+			 a = (UndConsumo) it.next();
+			 aa.add(a);
+			 }
+		extent.closeAll();
+		pm.close(); 
+		return aa;
 
+	}
+
+	@Override
+	public void elminarUndConsumo(String idUnd) {
+		// TODO Auto-generated method stub
+		PersistenceManager pm = getPersistenceManager();
+		UndConsumo e = pm.getObjectById(UndConsumo.class,idUnd);
+		pm.deletePersistent(e);
+		return;	
 	}
 	
 }

@@ -17,7 +17,7 @@ public class Empresa implements Serializable {
 	
 
 	public Empresa() {		
-		
+		getCodigoEmpresa();
 	}
 
 

@@ -1,8 +1,10 @@
 package com.google.gwt.sample.stockwatcher.server;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.logging.Logger;
 
+import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
@@ -58,29 +60,21 @@ public class DepartamentoServiceImpl  extends RemoteServiceServlet implements De
 		return d;
 	}
 	
+	
 	@Override
 	public ArrayList<Departamento> cargarDepartamento(){
 		PersistenceManager pm = getPersistenceManager();
-		ArrayList<Departamento>un=new ArrayList<Departamento>();
-		Departamento und1=new Departamento("01","PLANTACION");
-		Departamento und2=new Departamento("02","EXTRACTORA");
-		Departamento und3=new Departamento("03","AGRICOLA");	
-		
-		Departamento u1= pm.getObjectById(Departamento.class, und1.getCodDpto());
-		if(u1!=null){
-			un.add(u1);
-		}
-		Departamento u2= pm.getObjectById(Departamento.class, und2.getCodDpto());
-		if(u2!=null){
-			un.add(u2);
-		}
-		Departamento u3= pm.getObjectById(Departamento.class, und3.getCodDpto());
-		if(u3!=null){
-			un.add(u3);
-		}
-		
-		return un;
-
+		Departamento a=null;
+		ArrayList<Departamento>aa= new ArrayList<Departamento>();
+		Extent extent = pm.getExtent(Departamento.class, false);
+		Iterator it = extent.iterator();
+		while(it.hasNext()) {
+			 a = (Departamento) it.next();
+			 aa.add(a);
+			 }
+		extent.closeAll();
+		pm.close(); 
+		return aa;
 	}
 
 
