@@ -1771,7 +1771,7 @@ private  void gurad(){
 				 
 				 if(jj==productoPedido.getRowCount()-4){			 
 				
-					
+					 Window.alert("se guardo satisfactoriamente");
 				     gurad(pedi,producto,cantidad,fe,cen,observaciones,dep,fePed);
 					 Window.alert("Termino el ciclo for :p"+"\n Pedido: "+pedi+"\n"+producto+"\n"+cantidad+"\n"+fe+"\n"+cen+"\n"+observaciones+"\n"+dep+"\n"+fePed+"");
 					  
@@ -1797,8 +1797,7 @@ private  void gurad(){
 		}
 		@Override
 		public void onSuccess(Void result) {
-			// TODO Auto-generated method stub
-			Window.alert("se guardo satisfactoriamente");
+			// TODO Auto-generated method stub		
 			    
 			    productoPedido.removeAllRows();
 	            filitas();
