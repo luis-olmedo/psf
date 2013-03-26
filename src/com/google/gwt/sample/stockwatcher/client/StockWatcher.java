@@ -52,8 +52,8 @@ import com.google.gwt.user.datepicker.client.DateBox;
 
 public class StockWatcher implements EntryPoint {
 
-
-private VerticalPanel mainPanel = new VerticalPanel(); 
+  private VerticalPanel emprePanel= new VerticalPanel();
+  private VerticalPanel mainPanel = new VerticalPanel(); 
   private HorizontalPanel addPanel = new HorizontalPanel();
   private HorizontalPanel addPanel1 = new HorizontalPanel();
   private HorizontalPanel addPanel2 = new HorizontalPanel();
@@ -328,7 +328,7 @@ private  TextBox saldoBox=new TextBox();
 	  mainPanel.add(addPanel);
 	  mainPanel.add(addPanel1);
 	  mainPanel.add(addPanel2);
-	  mainPanel.add(addPanel3);
+	  mainPanel.add(addPanel3); 
 	  RootPanel.get("stockList").add(mainPanel);
 	  
 	  apboton1.addClickHandler(new ClickHandler() {			
@@ -1833,8 +1833,7 @@ private  void gurad(){
 	  existenciaPro.setText(0, 0, "GESTION DE EXISTENCIAS");
 	  existenciaPro.setText(1, 0, "PRODUCTO");
 	  existenciaPro.setText(1, 3, "CANTIDAD");
-	  existenciaPro.setText(1, 6, "FECHA");
-	 
+	  existenciaPro.setText(1, 6, "FECHA"); 
 		 
 	   
 		addPanel.add(usu);
@@ -2457,21 +2456,23 @@ private  void gurad(){
 	  mainPanel.add(addPanel1);
 	  mainPanel.add(addPanel2);	  
 	  mainPanel.add(addPanel3);
-	  mainPanel.add(addPanel4);
-	  RootPanel.get("stockList").add(mainPanel);
-	  codigoBox.setFocus(true);
-	  
+	  mainPanel.add(addPanel4);		  
+	  RootPanel.get("empresita").add(mainPanel);
+	  codigoBox.setFocus(true);	  
+	 
 	  crearButon.addClickHandler(new ClickHandler() {		
 		@Override
 		public void onClick(ClickEvent event) {
-			addCrear();			
+			addCrear();	
+		
 		}
 	});	  
 	  busBoton.addClickHandler(new ClickHandler() {			 
 			@Override
 			public void onClick(ClickEvent event) {			
 			
-			mostrar();
+			mostrar();			
+				
 				
 			}
 		});
@@ -2482,12 +2483,13 @@ private  void gurad(){
 				 
 			}
 		});
-	  
+	
 	  eliminarBoton.addClickHandler(new ClickHandler() {
 		
 		@Override
 		public void onClick(ClickEvent event) {
-		eliminarEmpresa();
+	      // eliminarEmpresa();
+			RootPanel.get("stockList").add(mainPanel);
 			
 		}
 	});
@@ -2497,8 +2499,7 @@ private  void gurad(){
 		@Override
 		public void onClick(ClickEvent event) {
 			// TODO Auto-generated method stub
-			modificarEmpresa();
-			
+			modificarEmpresa();			
 			
 		}
 	});
@@ -2509,8 +2510,7 @@ private  void gurad(){
 		 todasEmpresas();
 		}
 	});
-  } 
-  
+  }   
     private  void  todasEmpresas(){
     	empresaService.listTodos( new AsyncCallback<ArrayList<Empresa>>() {
 			@Override
