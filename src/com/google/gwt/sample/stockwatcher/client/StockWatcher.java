@@ -274,6 +274,8 @@ private TextBox num= new TextBox();
 private  TextBox  fechaped= new TextBox();
 private  TextBox saldoBox=new TextBox();
 
+private Button gestionPedido= new Button("Gestion Pedido");
+
   public void onModuleLoad() {
 	  
 	    LoginServiceAsync loginService = GWT.create(LoginService.class);	    
@@ -311,6 +313,7 @@ private  TextBox saldoBox=new TextBox();
 	  
   private void loadStockWatcher(){	
 	  signOutLink.setHref(loginInfo.getLogoutUrl());
+	  addPanel.add(gestionPedido);
 	  addPanel.add(apboton);
 	  addPanel.add(apboton1);
 	  addPanel.add(apboton2);	
@@ -330,7 +333,14 @@ private  TextBox saldoBox=new TextBox();
 	  mainPanel.add(addPanel2);
 	  mainPanel.add(addPanel3); 
 	  RootPanel.get("stockList").add(mainPanel);
-	  
+	  gestionPedido.addClickHandler(new ClickHandler() {
+		
+		@Override
+		public void onClick(ClickEvent event) {
+			// TODO Auto-generated method stub
+			Window.Location.assign("ModuloPedido.html");
+		}
+	});
 	  apboton1.addClickHandler(new ClickHandler() {			
 			@Override
 			public void onClick(ClickEvent event) {
