@@ -105,7 +105,23 @@
     <servlet-name>dptoService</servlet-name>
     <url-pattern>/stockwatcher/dpto</url-pattern>
   </servlet-mapping>
-    
+ 
+     <servlet-mapping>
+    <servlet-name>dptoService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mpedido/dpto</url-pattern>
+  </servlet-mapping>
+  
+       <servlet-mapping>
+    <servlet-name>centroService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mpedido/centros</url-pattern>
+  </servlet-mapping>
+  
+         <servlet-mapping>
+    <servlet-name>productoService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mpedido/producto</url-pattern>
+  </servlet-mapping>
+  
+       
    <servlet-mapping>
     <servlet-name>lugarService</servlet-name>
     <url-pattern>/stockwatcher/lugar</url-pattern>
