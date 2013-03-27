@@ -178,8 +178,7 @@ public class StockWatcher implements EntryPoint {
   private Button eliminarProducto= new Button("Eliminar");
   private Button modificarProducto= new Button("Modificar");
   private Button buscarProducto= new Button("Buscar");
-  
-  
+    
   private Label ll1= new Label("Bodega: ");
   private ListBox BoxlistBodega= new ListBox();
   private Label ll2= new Label("Producto: ");
@@ -196,8 +195,7 @@ public class StockWatcher implements EntryPoint {
   private Button eliminarExistencia= new Button("Eliminar");
   private Button modificarExistencia= new Button("Modificar");
   private Button buscarExistencia= new Button("Buscar");
-  
-  
+    
  
 private  FlexTable productoPedido = new FlexTable();
 private  Button add= new  Button("Add");
@@ -275,6 +273,7 @@ private  TextBox  fechaped= new TextBox();
 private  TextBox saldoBox=new TextBox();
 
 private Button gestionPedido= new Button("Gestion Pedido");
+private Button gestionConfiguracion= new Button("Gestiod de Configuracion");
 
   public void onModuleLoad() {
 	  
@@ -298,8 +297,7 @@ private Button gestionPedido= new Button("Gestion Pedido");
 		
 	    });
 	    
-	  }  
- 
+	  }   
  
  
 	  private void loadLogin() {
@@ -308,12 +306,13 @@ private Button gestionPedido= new Button("Gestion Pedido");
 	    loginPanel.add(loginLabel);
 	    loginPanel.add(signInLink);	 
 	    RootPanel.get("stockList").add(loginPanel);
-	    }    
+	    }   
 	  
 	  
   private void loadStockWatcher(){	
 	  signOutLink.setHref(loginInfo.getLogoutUrl());
 	  addPanel.add(gestionPedido);
+	  addPanel.add(gestionConfiguracion);
 	  addPanel.add(apboton);
 	  addPanel.add(apboton1);
 	  addPanel.add(apboton2);	
@@ -332,7 +331,27 @@ private Button gestionPedido= new Button("Gestion Pedido");
 	  mainPanel.add(addPanel1);
 	  mainPanel.add(addPanel2);
 	  mainPanel.add(addPanel3); 
+	  apboton.setVisible(false);
+	  apboton1.setVisible(false);
+	  apboton2.setVisible(false);	
+	  dptBoton.setVisible(false);
+	  lugarBoton.setVisible(false);
+	  undconBoton.setVisible(false);
+	  bodegaBoton.setVisible(false);
+	  productoBoton.setVisible(false);
+	  existenciasBoton.setVisible(false);
+	  pedidoproductoBoton.setVisible(false);
+	  tipopedidodptpBoton.setVisible(false);
+	  usuarioBoton.setVisible(false);
 	  RootPanel.get("stockList").add(mainPanel);
+	  
+	  gestionConfiguracion.addClickHandler(new ClickHandler() {		
+		@Override
+		public void onClick(ClickEvent event) {
+			// TODO Auto-generated method stub
+			Window.Location.assign("ModuloConfiguracion.html");
+		}
+	});
 	  gestionPedido.addClickHandler(new ClickHandler() {
 		
 		@Override

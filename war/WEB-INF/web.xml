@@ -121,6 +121,15 @@
     <url-pattern>/com.google.gwt.sample.stockwatcher.Mpedido/producto</url-pattern>
   </servlet-mapping>
   
+         <servlet-mapping>
+    <servlet-name>tipoPedidoService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mpedido/tipopedidodpto</url-pattern>
+  </servlet-mapping> 
+  
+             <servlet-mapping>
+    <servlet-name>productopedidoService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mpedido/pp</url-pattern>
+  </servlet-mapping>  
        
    <servlet-mapping>
     <servlet-name>lugarService</servlet-name>
