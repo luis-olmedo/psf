@@ -1,2 +1,0 @@
-serviceClass: com.google.gwt.sample.stockwatcher.client.UndConsumoService
-path: 16BD1A336476C990A4ACA5375F7534D1.gwt.rpc

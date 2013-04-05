@@ -1,2 +1,0 @@
-serviceClass: com.google.gwt.sample.stockwatcher.client.BodegaService
-path: 15B6C9FEDB37EB764A429393683A2841.gwt.rpc

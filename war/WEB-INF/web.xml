@@ -87,9 +87,13 @@
   
    <servlet-mapping>
     <servlet-name>empresaService</servlet-name>
-    <url-pattern>/stockwatcher/empresa</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mconfiguracion/empresa</url-pattern>
   </servlet-mapping>
- 
+  
+    <servlet-mapping>
+    <servlet-name>empresaService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mbodega/empresa</url-pattern>
+  </servlet-mapping>
   
    <servlet-mapping>
     <servlet-name>tipoService</servlet-name>
@@ -98,12 +102,12 @@
   
    <servlet-mapping>
     <servlet-name>centroService</servlet-name>
-    <url-pattern>/stockwatcher/centros</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mcentro/centros</url-pattern>
   </servlet-mapping>
   
    <servlet-mapping>
     <servlet-name>dptoService</servlet-name>
-    <url-pattern>/stockwatcher/dpto</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mdepto/dpto</url-pattern>
   </servlet-mapping>
  
      <servlet-mapping>
@@ -133,17 +137,17 @@
        
    <servlet-mapping>
     <servlet-name>lugarService</servlet-name>
-    <url-pattern>/stockwatcher/lugar</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mlugar/lugar</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
     <servlet-name>undService</servlet-name>
-    <url-pattern>/stockwatcher/und</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Munidad/und</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
     <servlet-name>bodegaService</servlet-name>
-    <url-pattern>/stockwatcher/bodega</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mbodega/bodega</url-pattern>
   </servlet-mapping>
   
     <servlet-mapping>
@@ -151,26 +155,65 @@
     <url-pattern>/stockwatcher/usuario</url-pattern>
   </servlet-mapping>
   
+    
+   <servlet-mapping>
+    <servlet-name>undService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mproducto/und</url-pattern>
+  </servlet-mapping>
+  
    <servlet-mapping>
     <servlet-name>productoService</servlet-name>
-    <url-pattern>/stockwatcher/producto</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mproducto/producto</url-pattern>
+  </servlet-mapping>
+  
+   
+   
+   <servlet-mapping>
+    <servlet-name>bodegaService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mexistencias/bodega</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>productoService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mexistencias/producto</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>
     <servlet-name>existenciaService</servlet-name>
-    <url-pattern>/stockwatcher/existencia</url-pattern>
-  </servlet-mapping>  
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mexistencias/existencia</url-pattern>
+  </servlet-mapping> 
   
-    <servlet-mapping>
+  
+  
+  
+  
+   <servlet-mapping>
     <servlet-name>productopedidoService</servlet-name>
     <url-pattern>/stockwatcher/pp</url-pattern>
   </servlet-mapping>  
   
+    
+   <servlet-mapping>
+    <servlet-name>empresaService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mtipopedido/empresa</url-pattern>
+  </servlet-mapping>
   
+   <servlet-mapping>
+    <servlet-name>dptoService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mtipopedido/dpto</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+    <servlet-name>lugarService</servlet-name>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mtipopedido/lugar</url-pattern>
+  </servlet-mapping>
+    
   <servlet-mapping>
     <servlet-name>tipoPedidoService</servlet-name>
-    <url-pattern>/stockwatcher/tipopedidodpto</url-pattern>
+    <url-pattern>/com.google.gwt.sample.stockwatcher.Mtipopedido/tipopedidodpto</url-pattern>
   </servlet-mapping>  
+  
+  
   
   
   <servlet-mapping>

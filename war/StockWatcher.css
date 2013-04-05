@@ -1,9 +1,9 @@
 /** Add css rules here for your application. */
 
-
 /** Example rules used by the template application (remove for your app) */
+
 h1 {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
   color: #777777;
   margin: 40px 0px 70px;
@@ -33,6 +33,160 @@ h1 {
   margin: 15px 6px 6px;
 }
 
+
 .errorMessage {
   color: red;
+}
+
+/** pagina principal */
+
+
+#stockList{
+	
+border:2px solid #777777;
+background:#fff;
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1024 px; /* Definimos el ancho del objeto a centrar */
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:25px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:50px;
+text-align:center;
+}
+
+#gg{	
+border:2px solid #777777;
+background:#fff;
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1024 px; /* Definimos el ancho del objeto a centrar */
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:25px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:50px;
+text-align:center;
+}
+
+.apboton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.apboton1{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.apboton2{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.dptBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.lugarBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.undconBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.bodegaBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;	
+}
+.productoBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+.usuarioBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;	
+}
+.tipopedidodptpBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777; 
+  text-align: center;
+  width: 120px;
+  border-radius: 5px;
+}
+
+.gestionPedido{	
+	
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 100px 0px;
+  text-align: center;
+  width: 120px;
+   border-radius: 5px;
+   
+        
+}
+
+.gestionConfiguracion{
+	
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 100px;
+  text-align: center; 
+  width: 120px; 
+  border-radius: 5px; 
 }

@@ -17,7 +17,7 @@ public class Exixtencias implements Serializable {
 	@Persistent
 	private  ArrayList<String> codigoProducto;	
 	@Persistent
-	private ArrayList<String> cantidad;
+	private ArrayList<Double> cantidad;
 	@Persistent
 	private ArrayList<Date>  fecha;
 
@@ -28,7 +28,7 @@ public class Exixtencias implements Serializable {
 
 
 	public Exixtencias(String codigoBodega, ArrayList<String> codigoProducto,
-			ArrayList<String> cantidad, ArrayList<Date> fecha) {
+			ArrayList<Double> cantidad, ArrayList<Date> fecha) {
 		super();
 		this.codigoBodega = codigoBodega;
 		this.codigoProducto = codigoProducto;
@@ -57,12 +57,12 @@ public class Exixtencias implements Serializable {
 	}
 
 
-	public ArrayList<String> getCantidad() {
+	public ArrayList<Double> getCantidad() {
 		return cantidad;
 	}
 
 
-	public void setCantidad(ArrayList<String> cantidad) {
+	public void setCantidad(ArrayList<Double> cantidad) {
 		this.cantidad = cantidad;
 	}
 
@@ -84,6 +84,8 @@ public class Exixtencias implements Serializable {
 				+ cantidad + ", fecha=" + fecha + "]";
 	}
 
+
+	
 
 	
 

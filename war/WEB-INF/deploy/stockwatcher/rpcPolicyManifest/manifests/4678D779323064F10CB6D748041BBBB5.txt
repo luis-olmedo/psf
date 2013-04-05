@@ -1,2 +1,0 @@
-serviceClass: com.google.gwt.sample.stockwatcher.client.CentroCostoService
-path: 7A718C815221C196E260B0825D904C27.gwt.rpc

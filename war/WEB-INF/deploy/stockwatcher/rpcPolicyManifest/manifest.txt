@@ -1,15 +1,3 @@
 # Module stockwatcher
 # RPC service class, partial path of RPC policy file
-com.google.gwt.sample.stockwatcher.client.DepartamentoService, 84D2EC1FBBFB9699F9F783410D618DEC.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.UndConsumoService, 16BD1A336476C990A4ACA5375F7534D1.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.EmpresaService, D4B4C6217D750AE1E356ED5EB291B368.gwt.rpc
 com.google.gwt.sample.stockwatcher.client.LoginService, 8FD1557B12BFDB36A4EA113D6BD8C2D0.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.ProductoBaseService, 32A83EEBA66B8411EFBA15912BBB04CF.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.UsuarioService, 614572E29D7BCC2FEC37263DB75B716B.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.CentroCostoService, 7A718C815221C196E260B0825D904C27.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.ProductoPedidoService, BE7BBF4605E5AC294E5AB809CEC77CF9.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.LugarPedidoService, 094C5A54ED89BE0CA6CBFE3E48B57164.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.ExistenciaService, 52D71CD982A0ADF32750F9644970320E.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.TipoPedidoDptoService, 8F57389A7FF0D570B6BA8C2936807679.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.TipoUsuarioService, ADC06AC478F5D8959D346E0032AFFF6C.gwt.rpc
-com.google.gwt.sample.stockwatcher.client.BodegaService, 15B6C9FEDB37EB764A429393683A2841.gwt.rpc

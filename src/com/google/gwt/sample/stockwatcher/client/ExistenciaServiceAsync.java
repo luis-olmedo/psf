@@ -13,11 +13,35 @@ public interface ExistenciaServiceAsync {
 
 
 	void buscarExistencia(String codigoProducto,
-			AsyncCallback<ArrayList<Exixtencias>> callback);
+			AsyncCallback<ArrayList<Exixtencias>> callback);	
+
+
+	void elminarExistencia(String codigo, AsyncCallback<Void> callback);
+
+
+	void consultarExistencia(String codigo, AsyncCallback<String> callback);
+
 
 	void addExistencia(String codigoBodega, ArrayList<String> codigoProducto,
-			ArrayList<String> cantidad, ArrayList<Date> fecha,
+			ArrayList<Double> cantidad, ArrayList<Date> fecha,
 			AsyncCallback<Void> callback);
+
+
+	void cargarExistenciass(String codigoBodega, Date fecha,
+			String codigoProducto,
+			AsyncCallback<ArrayList<Exixtencias>> callback);
+
+
+	void cargarExistenciassBodega(String codigoBodega,
+			AsyncCallback<ArrayList<Exixtencias>> callback);
+
+
+	void cargarExistenciassFecha(Date fecha,
+			AsyncCallback<ArrayList<Exixtencias>> callback);
+
+
+	void cargarExistenciassProducto(String codigoProducto,
+			AsyncCallback<ArrayList<Exixtencias>> callback);
 
 
 }

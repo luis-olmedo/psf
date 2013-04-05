@@ -24,9 +24,9 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 		  private PersistenceManager getPersistenceManager() {
 			    return PMF.getPersistenceManager();
 			  }
-		  
+		 @Override 
 		  public void addExistencia(String codigoBodega, ArrayList<String> codigoProducto,
-					ArrayList<String> cantidad, ArrayList<Date> fecha){	
+					ArrayList<Double> cantidad, ArrayList<Date> fecha){	
 			  
 			          PersistenceManager pm = getPersistenceManager();	
 			          
@@ -57,6 +57,14 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 				return aa;
 		  }
 		  
+		  public void  elminarExistencia(String codigo){
+				PersistenceManager pm = getPersistenceManager();
+				Exixtencias e = pm.getObjectById(Exixtencias.class, codigo);
+				pm.deletePersistent(e);
+				return;	
+			}
+
+		  
 		  
 		  @Override
 		  public ArrayList<Exixtencias> buscarExistencia(String  codigoProducto){
@@ -74,6 +82,108 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 				return aa;
 			  
 		  }
+		  @Override
+		  public String consultarExistencia(String codigo){		
+			  PersistenceManager pm = getPersistenceManager();
+			  Exixtencias e = pm.getObjectById(Exixtencias.class, codigo);
+			  return e.getCodigoBodega();
+			  }
+		  
+		  @Override
+			public ArrayList<Exixtencias> cargarExistenciass(String codigoBodega, Date fecha, String codigoProducto){
+				PersistenceManager pm = getPersistenceManager();
+				Exixtencias resultado=null,detached=null;
+				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
+				Query q= pm.newQuery(Exixtencias.class);				
+				q.setFilter("codigoBodega==:codigoBodega && fecha==:fecha && codigoProducto==:codigoProducto");				
+				
+				q.setUnique(true);
+				  try{						
+					  resultado=(Exixtencias)q.execute(codigoBodega,fecha,codigoProducto);					 
+						  if(resultado!=null){								    
+								  detached=pm.detachCopy(resultado);								  
+								  un.add(detached);
+								  }							 
+				  }catch (Exception e){
+					  e.printStackTrace();
+				  }finally{
+					  pm.close();
+					  q.closeAll();
+				  }
+				  return un;
+			}	
+	
+		  @Override
+			public ArrayList<Exixtencias> cargarExistenciassBodega(String codigoBodega){
+				PersistenceManager pm = getPersistenceManager();
+				Exixtencias resultado=null,detached=null;
+				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
+				Query q= pm.newQuery(Exixtencias.class);				
+				q.setFilter("codigoBodega==:codigoBodega");	
+				q.setUnique(true);
+
+				  try{						
+					  resultado=(Exixtencias)q.execute(codigoBodega);					 
+						  if(resultado!=null){								    
+								  detached=pm.detachCopy(resultado);								  
+								  un.add(detached);
+								  }							 
+				  }catch (Exception e){
+					  e.printStackTrace();
+				  }finally{
+					  pm.close();
+					  q.closeAll();
+				  }
+				  return un;
+			}	
+			
+		  @Override
+			public ArrayList<Exixtencias> cargarExistenciassFecha( Date fecha){
+				PersistenceManager pm = getPersistenceManager();
+				Exixtencias resultado=null,detached=null;
+				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
+				Query q= pm.newQuery(Exixtencias.class);					
+				q.setFilter("fecha==:fecha");					
+				q.setUnique(true);
+
+				  try{						
+					  resultado=(Exixtencias)q.execute(fecha);					 
+						  if(resultado!=null){								    
+								  detached=pm.detachCopy(resultado);								  
+								  un.add(detached);
+								  }							 
+				  }catch (Exception e){
+					  e.printStackTrace();
+				  }finally{
+					  pm.close();
+					  q.closeAll();
+				  }
+				  return un;
+			}	
+			
+		  @Override
+			public ArrayList<Exixtencias> cargarExistenciassProducto(String codigoProducto){
+				PersistenceManager pm = getPersistenceManager();
+				Exixtencias resultado=null,detached=null;
+				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
+				Query q= pm.newQuery(Exixtencias.class);				
+				q.setFilter("codigoProducto==:codigoProducto");	
+				q.setUnique(true);
+				  try{						
+					  resultado=(Exixtencias)q.execute(codigoProducto);					 
+						  if(resultado!=null){								    
+								  detached=pm.detachCopy(resultado);								  
+								  un.add(detached);
+								  }							 
+				  }catch (Exception e){
+					  e.printStackTrace();
+				  }finally{
+					  pm.close();
+					  q.closeAll();
+				  }
+				  return un;
+			}	
+			
 		  
 		  
 }
