@@ -30,10 +30,10 @@ public interface ExistenciaService  extends RemoteService{
 	ArrayList<Exixtencias> cargarExistenciass(String codigoBodega, Date fecha,
 			String codigoProducto);
 
-	ArrayList<Exixtencias> cargarExistenciassBodega(String codigoBodega);
-
 	ArrayList<Exixtencias> cargarExistenciassFecha(Date fecha);
 
 	ArrayList<Exixtencias> cargarExistenciassProducto(String codigoProducto);
+
+	ArrayList<Exixtencias> cargarExistenciassBodega(String codigoBodega);
 
 }

@@ -16,24 +16,12 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class StockWatcher implements EntryPoint {
 
-  private VerticalPanel mainPanel = new VerticalPanel(); 
-  private HorizontalPanel addPanel = new HorizontalPanel();
-  private HorizontalPanel addPanel1 = new HorizontalPanel();
-  private HorizontalPanel addPanel2 = new HorizontalPanel();
-  private HorizontalPanel addPanel3 = new HorizontalPanel(); 
-
   private LoginInfo loginInfo = null;
   private VerticalPanel loginPanel = new VerticalPanel();
   private Label loginLabel = new Label("Acceder a  su cuenta  de google para utilizar la aplicacion PSFSERVICE");
   private Anchor signInLink = new Anchor("Iniciar Sesión");
   private Anchor signOutLink = new Anchor("Salir");
-   
-private Label usu= new Label ("Usuario: ");
-private Label usuario= new Label ();
-
-
-private Button gestionPedido= new Button("Gestion de Pedido");
-private Button gestionConfiguracion= new Button("Gestion de Configuracion");
+ private Label usuario= new Label ();
 
   public void onModuleLoad() {
 	  
@@ -46,9 +34,11 @@ private Button gestionConfiguracion= new Button("Gestion de Configuracion");
 	      
 	      public void onSuccess(LoginInfo result) {
 	      loginInfo = result;	      
-	      if(loginInfo.isLoggedIn()) {	    	  
-	        loadStockWatcher();	        
-	        Window.alert("Bienvenido Usuario: "+result.getEmailAddress());	
+	      if(loginInfo.isLoggedIn()) {
+	    	  
+	       Window.alert("Bienvenido Usuario: "+result.getEmailAddress());	
+	       Window.Location.assign("Index.html");       
+	      
 	        usuario.setText(result.getEmailAddress()); 	       
 	        }else{         
 	          loadLogin();         
@@ -69,36 +59,5 @@ private Button gestionConfiguracion= new Button("Gestion de Configuracion");
 	    }   
 	  
 	  
-  private void loadStockWatcher(){	
-	  signOutLink.setHref(loginInfo.getLogoutUrl());
-	  addPanel.add(gestionPedido);
-	  addPanel.add(gestionConfiguracion);	  
-	  addPanel3.add(usu);
-	  addPanel3.add(usuario);
-	  mainPanel.add(addPanel);
-	  mainPanel.add(addPanel1);
-	  mainPanel.add(addPanel2);
-	  mainPanel.add(addPanel3); 
-	
-	  gestionPedido.setStyleName("gestionPedido");
-	  gestionConfiguracion.setStyleName("gestionConfiguracion");
-	  
-	  RootPanel.get("stockList").add(mainPanel);	  
-	  gestionConfiguracion.addClickHandler(new ClickHandler() {		
-		@Override
-		public void onClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-			Window.Location.assign("ModuloConfiguracion.html");
-		}
-	});
-	  gestionPedido.addClickHandler(new ClickHandler() {
-		
-		@Override
-		public void onClick(ClickEvent event) {
-			// TODO Auto-generated method stub
-			Window.Location.assign("ModuloPedido.html");
-		}
-	});
-	  	
-  }
+ 
 }

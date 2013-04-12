@@ -10,38 +10,11 @@ h1 {
   text-align: center;
 }
 
-.sendButton {
-  display: block;
-  font-size: 16pt;
-}
-
-/** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
-}
-
-.dialogVPanel {
-  margin: 5px;
-}
-
-.serverResponseLabelError {
-  color: red;
-}
-
-/** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
-  margin: 15px 6px 6px;
-}
 
 
-.errorMessage {
-  color: red;
-}
-
-/** pagina principal */
-
-
-#stockList{
+ /* pagina principal */
+ 
+#principal{
 	
 border:2px solid #777777;
 background:#fff;
@@ -49,6 +22,7 @@ position: absolute;
 top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
 left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
 width: 1024 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
 margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
 margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
 padding-top:25px;
@@ -56,8 +30,59 @@ padding-bottom:25px;
 padding-right:50px;
 padding-left:50px;
 text-align:center;
+
+/*esto  son efectos de  caja*/
+-webkit-box-shadow: 0 10px 6px -6px #777;
+-moz-box-shadow: 0 10px 6px -6px #777;
+ box-shadow: 0 10px 6px -6px #777;
+
 }
 
+.gestionPedido1{	
+	
+   font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:60px;         
+}
+
+.gestionConfiguracion1{
+	
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center; 
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute;
+  margin-top:30px;
+  margin-left:280px;
+}
+
+.usu{
+  position:absolute;
+  margin-top:500px;
+  margin-left:10px;	
+}
+
+.usuario{
+  position:absolute;
+  margin-top:500px;
+  margin-left:80px;	
+}
+
+
+ /* Modulo de Configuracion */
+ 
 #gg{	
 border:2px solid #777777;
 background:#fff;
@@ -65,6 +90,7 @@ position: absolute;
 top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
 left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
 width: 1024 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
 margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
 margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
 padding-top:25px;
@@ -78,115 +104,224 @@ text-align:center;
   font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
-  color: #777777; 
+  color: #777777;
   text-align: center;
-  width: 120px;
-  border-radius: 5px;
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:10px;  
+  margin-left:-25px;
 }
+
 .apboton1{
-  font-size: 1em;;    
+ font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;
+  color: #777777;
+  text-align: center; 
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute;
+  margin-top:10px;
+  margin-left:185px;
 }
 .apboton2{
   font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
-  color: #777777; 
+  color: #777777;
   text-align: center;
-  width: 120px;
-  border-radius: 5px;
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute;
+  margin-top:10px;
+  margin-left:385px;
+
+
 }
 .dptBoton{
+ font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center; 
+  width: 160px; 
+   height: 60px; 
+  border-radius: 5px;
+  position:absolute; 
+  margin-top:100px;  
+   margin-left:-25px;
+    
+}
+
+.tipopedidodptpBoton{
   font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;
+  color: #777777;
+  text-align: center; 
+  width: 160px; 
+   height: 60px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:100px;  
+   margin-left:185px;
+
 }
+
 .lugarBoton{
   font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
   color: #777777; 
   text-align: center;
-  width: 120px;
-  border-radius: 5px;
+  width: 160px;
+   height: 60px; 
+   border-radius: 5px;  
+ position:absolute; 
+  margin-top:100px;  
+    margin-left:385px;
+ 
 }
 .undconBoton{
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;
-}
-.bodegaBoton{
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;	
-}
-.productoBoton{
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;
-}
-.usuarioBoton{
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;	
-}
-.tipopedidodptpBoton{
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777; 
-  text-align: center;
-  width: 120px;
-  border-radius: 5px;
-}
-
-.gestionPedido{	
-	
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777;
-  margin: 40px 100px 0px;
-  text-align: center;
-  width: 120px;
-   border-radius: 5px;
-   
-        
-}
-
-.gestionConfiguracion{
-	
-  font-size: 1em;;    
+   font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
   color: #777777;
   margin: 40px 0px 100px;
   text-align: center; 
-  width: 120px; 
+  width: 160px; 
+   height: 60px; 
   border-radius: 5px; 
+     position:absolute;
+  margin-top:200px;
+  margin-left:-25px;
+
 }
+.bodegaBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 45px 0px;
+  text-align: center;
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute;
+  margin-top:200px;
+  margin-left:185px;
+}
+
+.productoBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center; 
+  width: 160px; 
+   height: 60px; 
+  border-radius: 5px;
+  position:absolute;
+  margin-top:200px;
+   margin-left:385px;
+}
+
+
+.usuarioBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 160px;
+   height: 60px; 
+   border-radius: 5px; 
+   position:absolute;
+  margin-top:200px;
+  margin-left:-25px;
+}
+
+ /* Modulo de pedidos*/
+ 
+#gp{	
+border:2px solid #777777;
+background:#fff;
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 50%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1024 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:25px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:50px;
+text-align:center;
+}
+
+.b{	
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:25px;          
+}
+
+
+.a{	
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center; 
+  width: 160px;
+  height: 60px; 
+  border-radius: 5px; 
+  position:absolute;
+  margin-top:30px;
+  margin-left:200px; 
+}
+
+
+#p{
+border:2px solid #777777;
+background:#fff;
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 25%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 950 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:25px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:50px;
+text-align:center;
+}
+
+.productoPedido{
+  border-top: thin solid #444444;
+  border-left: thin solid #444444;
+  border-right: thin solid #111111;
+  border-bottom: thin solid #111111;
+  background-color:  #505050;
+}
+
+.celdas{
+	color: red;
+	 background-color:  blue;
+	 border:2px solid green;
+}
+

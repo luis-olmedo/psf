@@ -115,11 +115,12 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 	
 		  @Override
 			public ArrayList<Exixtencias> cargarExistenciassBodega(String codigoBodega){
-				PersistenceManager pm = getPersistenceManager();
+			  PersistenceManager pm = getPersistenceManager();
 				Exixtencias resultado=null,detached=null;
 				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
-				Query q= pm.newQuery(Exixtencias.class);				
-				q.setFilter("codigoBodega==:codigoBodega");	
+		
+				Query q= pm.newQuery(Exixtencias.class);					
+				q.setFilter("codigoBodega==:codigoBodega");					
 				q.setUnique(true);
 
 				  try{						
@@ -142,6 +143,7 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 				PersistenceManager pm = getPersistenceManager();
 				Exixtencias resultado=null,detached=null;
 				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
+		
 				Query q= pm.newQuery(Exixtencias.class);					
 				q.setFilter("fecha==:fecha");					
 				q.setUnique(true);
@@ -168,6 +170,7 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
 				Query q= pm.newQuery(Exixtencias.class);				
 				q.setFilter("codigoProducto==:codigoProducto");	
+				
 				q.setUnique(true);
 				  try{						
 					  resultado=(Exixtencias)q.execute(codigoProducto);					 
