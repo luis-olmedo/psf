@@ -44,4 +44,8 @@ public interface ExistenciaServiceAsync {
 			AsyncCallback<ArrayList<Exixtencias>> callback);
 
 
+	void maximafecha(String codigoBodega,
+			AsyncCallback<ArrayList<Exixtencias>> callback);
+
+
 }

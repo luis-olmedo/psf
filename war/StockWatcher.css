@@ -10,6 +10,10 @@ h1 {
   text-align: center;
 }
 
+body{
+	width:100%;
+	}
+
 
 
  /* pagina principal */
@@ -293,35 +297,743 @@ text-align:center;
   margin-left:200px; 
 }
 
+/*Gestion de Pedidos*/
 
 #p{
-border:2px solid #777777;
+/*border:2px solid #777777;*/
 background:#fff;
 position: absolute;
 top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
 left: 25%; /* Buscamos el centro vertical (relativo) del navegador */
-width: 950 px; /* Definimos el ancho del objeto a centrar */
+width: 1050 px; /* Definimos el ancho del objeto a centrar */
 height:500px;
 margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
-margin-left: -300px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+margin-left: -335px; /* Restamos la mitad de la anchura del objeto con un margin-left */
 padding-top:25px;
 padding-bottom:25px;
 padding-right:50px;
 padding-left:50px;
 text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+}
+
+#exi{
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 25%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1050 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -335px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:300px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+	
+}
+
+#hEmpresa{
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 25%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1050 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -335px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+}
+
+#hcentro{
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 25%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1050 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -335px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+}
+
+#hdept{
+position: absolute;
+top: 40%; /* Buscamos el centro horizontal (relativo) del navegador */
+left: 25%; /* Buscamos el centro vertical (relativo) del navegador */
+width: 1050 px; /* Definimos el ancho del objeto a centrar */
+height:500px;
+margin-top: -200px; /* Restamos la mitad de la altura del objeto con un margin-top */
+margin-left: -335px; /* Restamos la mitad de la anchura del objeto con un margin-left */
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+}
+
+#dep{
+	 padding-left:70px;	
+}
+#dep1{
+	 padding-left:70px;	
+}
+
+#cen{
+ padding-left:70px;	
+}
+
+#cen1{
+ padding-left:70px;
+}
+
+#em{
+	padding-left:70px;
+}
+#em1{
+	padding-left:70px;
+}
+.codeptBox{
+  font-size: 30px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+.deptBox{
+	font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+
+}
+.crearDptBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+.eliminarDepto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:100px; 
+}
+.modificarDepto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:200px; 
+}
+.buscarDepto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:300px; 
+}
+
+.codBox{
+font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+.costoBox{
+  font-size: 15px;   
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:18px;
+  margin-bottom: 10px;
+}
+.codigoBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+
+.nombreBox{
+  font-size: 15px;   
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:5px;
+  margin-bottom: 10px;
+}
+.costoBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+.modificarCentro{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:100px; 
+}
+.eliminarCentro{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:200px; 	
+}
+.buscarCosto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:300px; 
+}
+		 
+.crearButon{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+.busBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:100px; 
+}
+.eliminarBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:200px; 
+}
+.modificarEmpresa{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:300px; 
+}
+.todaEmpresa{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:60px;  
+  margin-left:150px; 
 }
 
 .productoPedido{
-  border-top: thin solid #444444;
-  border-left: thin solid #444444;
-  border-right: thin solid #111111;
-  border-bottom: thin solid #111111;
-  background-color:  #505050;
+
+  border-top: thin solid #777777;
+  border-left: thin solid#777777;
+  border-right: thin solid #777777;
+  border-bottom: thin solid #777777;
+  background-color: #D8D8D8;
+  text-align: center;
+  font-size: 1em;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+ 
+ 
+
 }
 
-.celdas{
-	color: red;
-	 background-color:  blue;
-	 border:2px solid green;
+.celdas{	
+	 background-color:  #D8D8D8;
+	/* border:2px solid #777777;*/
+	 font-size: 1em;    
+     font-family: sans-serif ;  
+     font-weight: bold;
+     color: #777777;
+     text-align: center; 
 }
+
+  
+  .consultarBodega{
+   font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:600px; 
+  
+  }
+ .eliminarProductoPedido{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px;  
+   }
+   
+ .buscarProductoPedido{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+   width: 100px;
+    height: 30px;  
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:120px;  
+	 }
+	 
+ .limpiar{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px;   
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:240px;  
+ }	
+ 
+ .eliminarPedidosButton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px;  
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:360px;  
+	 }
+	 
+.editar{
+	
+  font-size: 10px;   
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:-10px; 
+  margin-left:10px;   
+}
+.eliminar {
+	
+  font-size: 10px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:-10px; 
+  margin-left:-80px;   
+  
+}
+
+.add {
+  font-size: 10px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:-10px; 
+  margin-left:-100px;  
+}
+
+.pedidoBox{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.BoxlistDepto{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.BoxlistProductop{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.BoxlistDepto{	
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.BoxlistCentro{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.gwt-SuggestBoxPopup .item-selected { 
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  background: #E6E6E6;
+  width: 170px;
+  border:1px solid #777777;
+  
+	 }
+	 
+.cantidadBox{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+	 
+.observacionesBox{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+ .Gwt-ListBox {
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: red;
+ }
+
+ .BoxfechaCubrimiento{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+ }
+ 
+ .fechaped{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+ }
+ 
+ /* Manejo de Existencias */
+ 
+ .eliminarProductoPedido1{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px;  
+   }
+   
+ .buscarProductoPedido1{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+   width: 100px;
+    height: 30px;  
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:120px;  
+	 }
+	 
+ .limpiar1{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px;   
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:240px;  
+ }	
+ 
+ .eliminarPedidosButton1{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px;  
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:360px;  
+	 }
+	 
+.editar1{
+	
+  font-size: 10px;   
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:-10px; 
+  margin-left:-40px;   
+}
+.eliminar1 {
+	
+  font-size: 10px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:-10px; 
+  margin-left:-140px;   
+  
+}
+
+.add1 {
+  font-size: 10px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:-10px; 
+  margin-left:-100px;  
+}
+
+.to{
+	
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 130px;
+   height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:480px;   
+	
+}
+
+.pedidoBox1{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.pedidooo1{
+	 font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+.BoxlistProductop1{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+	 
+.cantidadBox1{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+}
+
+
+ .BoxfechaCubrimiento1{
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+ }
+ 
+ .productoPedido1{
+
+  border-top: thin solid #777777;
+  border-left: thin solid#777777;
+  border-right: thin solid #777777;
+  border-bottom: thin solid #777777;
+  background-color: #D8D8D8;
+  text-align: center;
+  font-size: 1em;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+ 
+ 
+
+}
+
+-moz-box-sizing: border-box; 
+box-sizing: border-box;
+p{
+  margin-top:0px;
+  margin-bottom:1em;
+  }
+form{
+ margin:0px;
+ }
+input{
+padding:1px;
+}
+ 
+
 

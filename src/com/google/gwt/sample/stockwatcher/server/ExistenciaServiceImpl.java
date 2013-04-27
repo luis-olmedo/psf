@@ -120,7 +120,7 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
 		
 				Query q= pm.newQuery(Exixtencias.class);					
-				q.setFilter("codigoBodega==:codigoBodega");					
+				q.setFilter("codigoBodega==:codigoBodega");		
 				q.setUnique(true);
 
 				  try{						
@@ -185,7 +185,32 @@ public class ExistenciaServiceImpl extends RemoteServiceServlet implements Exist
 					  q.closeAll();
 				  }
 				  return un;
-			}	
+			}
+		  
+		  
+		  @Override
+			public ArrayList<Exixtencias> maximafecha(String codigoBodega){
+				PersistenceManager pm = getPersistenceManager();
+				Exixtencias resultado=null,detached=null;
+				ArrayList<Exixtencias>un=new ArrayList<Exixtencias>();
+				Query q= pm.newQuery(Exixtencias.class);				
+				q.setFilter("codigoBodega==:codigoBodega");				
+				
+				q.setUnique(true);
+				  try{						
+					  resultado=(Exixtencias)q.execute(codigoBodega);					 
+						  if(resultado!=null){								    
+								  detached=pm.detachCopy(resultado);								  
+								  un.add(detached);
+								  }							 
+				  }catch (Exception e){
+					  e.printStackTrace();
+				  }finally{
+					  pm.close();
+					  q.closeAll();
+				  }
+				  return un;
+			}
 			
 		  
 		  

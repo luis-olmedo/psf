@@ -35,5 +35,8 @@ public interface ExistenciaService  extends RemoteService{
 	ArrayList<Exixtencias> cargarExistenciassProducto(String codigoProducto);
 
 	ArrayList<Exixtencias> cargarExistenciassBodega(String codigoBodega);
+	
+
+	ArrayList<Exixtencias> maximafecha(String codigoBodega);
 
 }
