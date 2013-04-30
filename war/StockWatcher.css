@@ -191,16 +191,16 @@ text-align:center;
  
 }
 .undconBoton{
-   font-size: 1em;;    
+  font-size: 1em;;    
   font-family: sans-serif ;  
   font-weight: bold;
   color: #777777;
   margin: 40px 0px 100px;
   text-align: center; 
   width: 160px; 
-   height: 60px; 
+  height: 60px; 
   border-radius: 5px; 
-     position:absolute;
+  position:absolute;
   margin-top:200px;
   margin-left:-25px;
 
@@ -235,19 +235,7 @@ text-align:center;
 }
 
 
-.usuarioBoton{
-  font-size: 1em;;    
-  font-family: sans-serif ;  
-  font-weight: bold;
-  color: #777777;
-  text-align: center;
-  width: 160px;
-   height: 60px; 
-   border-radius: 5px; 
-   position:absolute;
-  margin-top:200px;
-  margin-left:-25px;
-}
+
 
  /* Modulo de pedidos*/
  
@@ -397,6 +385,635 @@ font-family: sans-serif ;
 font-weight: bold;
 }
 
+#hTipoPed{
+position: absolute;
+top: 40%; 
+left: 25%; 
+width: 1050 px;
+height:500px;
+margin-top: -200px; 
+margin-left: -335px;
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:480px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;	
+}
+
+#hLugar{
+position: absolute;
+top: 40%; 
+left: 25%; 
+width: 1050 px;
+height:500px;
+margin-top: -200px; 
+margin-left: -335px;
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;		
+}
+
+#hUnidad{
+position: absolute;
+top: 40%; 
+left: 25%; 
+width: 1050 px;
+height:500px;
+margin-top: -200px; 
+margin-left: -335px;
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;		
+}
+
+#hTipoUsu{
+position: absolute;
+top: 40%; 
+left: 25%; 
+width: 1050 px;
+height:500px;
+margin-top: -200px; 
+margin-left: -335px;
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;	
+}
+
+#tu{
+padding-left: 35px;	
+}
+
+#tu1{
+padding-left: 35px;	
+}
+
+.tipoBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:62px;
+  margin-bottom: 10px;	
+}
+.usuBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:20px;
+  margin-bottom: 10px;	
+}
+.addTuBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px;
+}
+.modificarTipoUsu{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:110px;
+}
+.eliminarTipoUsu{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:220px;
+}
+.buscarTipo{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:330px;	
+}
+
+#und{
+	padding-left: 35px;	
+}
+#und1{
+	padding-left: 35px;	
+}
+.idundBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:75px;
+  margin-bottom: 10px;
+}
+.unidadBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+.crearundBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+.eliminarUnd{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:110px; 	
+}
+.modificarUnd{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:220px; 
+}
+.buscarUnd{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:330px; 
+}
+
+#lu{
+padding-left: 75px;	
+}
+#lu1{
+padding-left: 75px;	
+}
+
+#hBodega{
+position: absolute;
+top: 40%; 
+left: 25%; 
+width: 1050 px;
+height:500px;
+margin-top: -200px; 
+margin-left: -335px;
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+
+}
+#bo{
+	padding-left: 75px;	
+}
+#bo1{
+	padding-left: 75px;	
+}
+#bo2{
+	padding-left: 75px;	
+}
+
+#hProducto{
+position: absolute;
+top: 40%; 
+left: 25%; 
+width: 1050 px;
+height:500px;
+margin-top: -200px; 
+margin-left: -335px;
+padding-top:60px;
+padding-bottom:25px;
+padding-right:50px;
+padding-left:500px;
+text-align:center;
+color:#777777;
+font-size: 1em;    
+font-family: sans-serif ;
+font-weight: bold;
+}
+.Boxproducto{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}			
+.Boxdesc{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}		
+.Boxcantidad{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+  width: 60px;
+}		
+.Boxprecio{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}		
+.BoxlistUnd{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+.crearProductoBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+.modificarProducto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:110px; 
+}
+.eliminarProducto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:220px; 
+}
+.buscarProducto{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:330px; 
+}
+.l3{
+	padding-left: 20px;
+}
+.l5{
+		padding-left: 20px;
+}
+.codBodegaBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+.bodegaBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:12px;
+  margin-bottom: 10px;
+}
+.empresaBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:5px;
+  margin-bottom: 10px;
+}
+.crearBodegaBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 	
+}
+.modificarBodega{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:110px; 	
+}
+.eliminarBodega{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:220px; 
+}
+.buscarBodega{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:330px; 
+}
+		  
+.codlugarBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}	 
+.lugtarBox{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:27px;
+  margin-bottom: 10px;
+}
+.crearlugarBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+.eliminarLugar{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:110px; 
+}
+.modificarLugar{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:220px; 
+}
+.buscarLugar{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:330px; 
+}
+		 
+
+.BoxlistPedidos{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+	
+.BoxlistLugar{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+		 
+.BoxlistDpto{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+		
+.BoxlistEmpresas{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+		 
+.BoxCubrimiento{
+  font-size: 15px;      
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  margin-left:15px;
+  margin-bottom: 10px;
+}
+
+.eliminarTipoPedido{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:0px; 
+}
+
+.crearTipoPedidoBoton{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:110px; 
+}
+
+.modificarTipoPedido{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:220px; 
+}
+
+.buscarTipoPedido{
+  font-size: 1em;;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+  text-align: center;
+  width: 100px;
+  height: 30px; 
+  border-radius: 5px; 
+  position:absolute; 
+  margin-top:30px;  
+  margin-left:330px; 
+}
+
 #dep{
 	 padding-left:70px;	
 }
@@ -419,15 +1036,16 @@ font-weight: bold;
 	padding-left:70px;
 }
 .codeptBox{
-  font-size: 30px;      
+  font-size: 15px;      
   font-family: sans-serif ;  
   font-weight: bold;
   color: #777777;
-  margin-left:15px;
+  margin-left:68px;
   margin-bottom: 10px;
+
 }
 .deptBox{
-	font-size: 15px;      
+  font-size: 15px;      
   font-family: sans-serif ;  
   font-weight: bold;
   color: #777777;
@@ -974,6 +1592,7 @@ font-size: 15px;
   font-family: sans-serif ;  
   font-weight: bold;
   color: #777777;
+  margin-bottom: 20px;
 }
 
 .pedidooo1{
@@ -1037,3 +1656,15 @@ padding:1px;
  
 
 
+.gwt-SuggestBoxPopup {  	
+	width: 400px;
+	background-color: #D8D8D8;
+}
+
+.gwt-SuggestBoxPopup .item { 
+  font-size: 15px;    
+  font-family: sans-serif ;  
+  font-weight: bold;
+  color: #777777;
+	
+}
