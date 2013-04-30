@@ -1,0 +1,3 @@
+# Module com.google.gwt.sample.stockwatcher.Mlugar
+# RPC service class, partial path of RPC policy file
+com.google.gwt.sample.stockwatcher.client.LugarPedidoService, 094C5A54ED89BE0CA6CBFE3E48B57164.gwt.rpc

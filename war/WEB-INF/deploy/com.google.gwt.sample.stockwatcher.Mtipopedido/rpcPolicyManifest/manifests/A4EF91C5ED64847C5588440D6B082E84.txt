@@ -1,0 +1,2 @@
+serviceClass: com.google.gwt.sample.stockwatcher.client.LugarPedidoService
+path: 094C5A54ED89BE0CA6CBFE3E48B57164.gwt.rpc

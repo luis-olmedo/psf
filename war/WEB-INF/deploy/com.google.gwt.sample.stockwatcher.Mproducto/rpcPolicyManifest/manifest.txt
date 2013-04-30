@@ -1,0 +1,4 @@
+# Module com.google.gwt.sample.stockwatcher.Mproducto
+# RPC service class, partial path of RPC policy file
+com.google.gwt.sample.stockwatcher.client.UndConsumoService, 16BD1A336476C990A4ACA5375F7534D1.gwt.rpc
+com.google.gwt.sample.stockwatcher.client.ProductoBaseService, 32A83EEBA66B8411EFBA15912BBB04CF.gwt.rpc

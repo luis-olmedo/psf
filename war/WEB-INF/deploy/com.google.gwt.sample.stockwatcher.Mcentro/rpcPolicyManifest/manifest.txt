@@ -1,0 +1,3 @@
+# Module com.google.gwt.sample.stockwatcher.Mcentro
+# RPC service class, partial path of RPC policy file
+com.google.gwt.sample.stockwatcher.client.CentroCostoService, 7A718C815221C196E260B0825D904C27.gwt.rpc

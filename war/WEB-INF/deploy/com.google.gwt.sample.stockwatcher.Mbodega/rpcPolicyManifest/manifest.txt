@@ -1,0 +1,4 @@
+# Module com.google.gwt.sample.stockwatcher.Mbodega
+# RPC service class, partial path of RPC policy file
+com.google.gwt.sample.stockwatcher.client.EmpresaService, D4B4C6217D750AE1E356ED5EB291B368.gwt.rpc
+com.google.gwt.sample.stockwatcher.client.BodegaService, 15B6C9FEDB37EB764A429393683A2841.gwt.rpc
